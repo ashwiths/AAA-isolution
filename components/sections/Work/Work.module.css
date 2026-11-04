@@ -300,6 +300,38 @@
   justify-self: end;
 }
 
+.viewAll {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px 30px;
+}
+.viewAll a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+.viewAll a:hover,
+.viewAll a:focus-visible {
+  border-color: var(--accent);
+  color: var(--ink);
+  background: rgba(20, 20, 20, 0.04);
+}
+.viewAll i {
+  color: var(--accent);
+  font-size: 15px;
+  font-style: normal;
+}
+
 /* ============ Touch / small screens / reduced motion: native snap row ======
    The reduced-motion clause is load-bearing and must mirror the JS gate in
    Work.tsx exactly. The desktop arc only runs under

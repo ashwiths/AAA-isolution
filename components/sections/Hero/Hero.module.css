@@ -6,12 +6,14 @@
 .hero {
   position: relative;
   background: #fff; /* opaque, so the layer above covers it cleanly */
-  height: auto;
+  height: 100%;
   min-height: 100svh;
+  max-height: 100svh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
-  padding-top: 96px;
+  padding-top: clamp(54px, 7.5vh, 76px);
 }
 
 /* ---------- ambient composition ---------- */
@@ -76,11 +78,12 @@
 .head {
   text-align: center;
   z-index: 5;
-  padding: 20px 24px 0;
+  padding: clamp(2px, 0.8vh, 10px) 24px 0;
+  flex-shrink: 0;
 }
 /* plain eyebrow — no pill, no box; the headline owns the stage */
 .kicker {
-  font-size: 12px;
+  font-size: clamp(10px, 0.9vw, 11.5px);
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -88,11 +91,11 @@
 }
 
 .h1 {
-  margin-top: 22px;
+  margin-top: clamp(6px, 1vh, 12px);
   font-weight: 900;
-  font-size: clamp(46px, 6.6vw, 100px);
+  font-size: clamp(28px, 3.8vw, 62px);
   letter-spacing: -0.035em;
-  line-height: 1.02;
+  line-height: 1.04;
 }
 .row {
   display: block;
@@ -108,10 +111,10 @@
 }
 
 .sub {
-  margin: 22px auto 0;
-  max-width: 560px;
-  font-size: 15.5px;
-  line-height: 1.65;
+  margin: clamp(6px, 1vh, 12px) auto 0;
+  max-width: 500px;
+  font-size: clamp(12.5px, 0.95vw, 14.5px);
+  line-height: 1.45;
   color: var(--ink-2);
 }
 
@@ -119,7 +122,7 @@
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-top: 26px;
+  margin-top: clamp(8px, 1.3vh, 16px);
 }
 .play {
   font-size: 9px;
@@ -130,12 +133,12 @@
 .stageRow {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr minmax(420px, 600px) 1fr;
+  grid-template-columns: 1fr minmax(280px, 460px) 1fr;
   align-items: end;
-  max-width: 1400px;
+  max-width: 1240px;
   width: 100%;
   margin: 0 auto;
-  padding: 30px 44px 0;
+  padding: 0 clamp(16px, 3vw, 44px);
   min-height: 0;
   z-index: 1;
 }
@@ -143,48 +146,48 @@
 .side {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding-bottom: 76px;
+  gap: clamp(8px, 1.2vh, 14px);
+  padding-bottom: clamp(6px, 1.5vh, 20px);
   z-index: 5;
 }
 .sideL {
   align-items: flex-end;
-  padding-right: 26px;
+  padding-right: clamp(10px, 1.5vw, 20px);
 }
 .sideR {
   align-items: flex-start;
-  padding-left: 26px;
+  padding-left: clamp(10px, 1.5vw, 20px);
 }
 .statCard {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1px solid rgba(20, 20, 20, 0.05);
-  box-shadow: 0 18px 44px -14px rgba(20, 20, 20, 0.1);
-  padding: 18px 22px;
-  width: 196px;
+  box-shadow: 0 14px 34px -10px rgba(20, 20, 20, 0.1);
+  padding: clamp(8px, 1.1vh, 12px) clamp(12px, 1.1vw, 16px);
+  width: clamp(160px, 13vw, 192px);
   will-change: transform;
 }
 .sideL .statCard:nth-child(1) {
   transform: rotate(-4deg);
 }
 .sideL .statCard:nth-child(2) {
-  transform: rotate(2.5deg) translateX(-18px);
+  transform: rotate(2.5deg) translateX(-14px);
 }
 .sideR .statCard:nth-child(1) {
   transform: rotate(4deg);
 }
 .sideR .statCard:nth-child(2) {
-  transform: rotate(-2.5deg) translateX(18px);
+  transform: rotate(-2.5deg) translateX(14px);
 }
 .statIcon {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
-  margin-bottom: 9px;
+  margin-bottom: 6px;
 }
 .statNum {
   display: flex;
-  font-size: 30px;
+  font-size: clamp(22px, 2vw, 28px);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -194,10 +197,10 @@
   color: var(--accent);
 }
 .statLabel {
-  font-size: 12px;
+  font-size: clamp(10.5px, 0.85vw, 11.5px);
   font-weight: 600;
   color: var(--ink-3);
-  margin-top: 6px;
+  margin-top: 4px;
   line-height: 1.35;
 }
 
@@ -209,27 +212,27 @@
   justify-content: center;
   align-items: flex-end;
   height: 100%;
-  min-height: 480px;
-  padding-bottom: 24px;
+  min-height: 0;
+  padding-bottom: 0;
 }
 .arch {
   position: absolute;
-  bottom: 24px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: min(450px, 78%);
-  height: min(88%, 540px);
+  width: min(380px, 78%);
+  height: min(94%, 420px);
   background: #f4f4f5;
   border-radius: 320px 320px 26px 26px;
   z-index: 1;
 }
 .archLine {
   position: absolute;
-  bottom: 38px;
+  bottom: 10px;
   left: 50%;
-  transform: translateX(-50%) translateX(-16px);
-  width: min(450px, 78%);
-  height: min(88%, 540px);
+  transform: translateX(-50%) translateX(-12px);
+  width: min(380px, 78%);
+  height: min(94%, 420px);
   border: 1.2px solid #e6e6e8;
   border-radius: 320px 320px 26px 26px;
   z-index: 0;
@@ -239,7 +242,8 @@
   position: relative;
   z-index: 3;
   width: auto;
-  height: min(54vh, 520px);
+  height: clamp(220px, 35vh, 390px);
+  max-height: 100%;
   max-width: 92%;
   object-fit: contain;
   object-position: bottom;
@@ -331,17 +335,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 20px 0 26px;
-  font-size: 11px;
+  gap: 8px;
+  padding: clamp(4px, 0.8vh, 10px) 0 clamp(6px, 1vh, 12px);
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-3);
   z-index: 5;
+  flex-shrink: 0;
 }
 .cueArrow {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--accent);
   animation: cue 1.8s ease-in-out infinite;
 }
@@ -358,14 +363,19 @@
 }
 
 /* ============ Responsive ============ */
-@media (max-width: 1180px) {
+@media (max-width: 1000px) {
   .hero {
-    padding-top: 104px;
-    gap: 34px;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    padding-top: 84px;
+    padding-bottom: 36px;
+    gap: 28px;
+    overflow: visible;
   }
   .stageRow {
     grid-template-columns: 1fr;
-    gap: 34px;
+    gap: 28px;
     padding: 0 24px;
   }
   .side {
@@ -394,8 +404,8 @@
   }
   .portrait {
     height: auto;
-    max-height: 54vh;
-    max-width: min(360px, 80vw);
+    max-height: 48vh;
+    max-width: min(340px, 80vw);
   }
   .annot,
   .stackLabel,

@@ -50,13 +50,13 @@ const IMAGES = [
 ];
 
 /* ---------- journey design ---------- */
-const JOURNEY_VIEWPORTS = 5.5; /* pinned scroll length */
-const STAGES = 6; /* progress rail: 01 … 06 */
-const TRAVEL_UNITS = 1050; /* total tunnel travel across the journey */
+const JOURNEY_VIEWPORTS = 4; /* pinned scroll length */
+const STAGES = 4; /* progress rail: 01 … 04 */
+const TRAVEL_UNITS = 850; /* total tunnel travel across the journey */
 const TRAVEL_CURVE = 1.35; /* ease-in: the journey accelerates toward its climax */
 const IDLE_DRIFT = 5; /* travel units/s while resting — the world never freezes */
-const T_START = 0.78; /* transition begins (brighten) */
-const T_RELEASE = 0.9; /* canvas begins to release (fade) */
+const T_START = 0.72; /* transition begins (brighten) */
+const T_RELEASE = 0.86; /* canvas begins to release (fade) */
 const MOUSE_X = 0.11;
 const MOUSE_Y = 0.07;
 
@@ -271,38 +271,88 @@ export default function TunnelIntro({ text = "AAA isolutions" }: { text?: string
       if (!ctx) return;
       ctx.scale(dpr, dpr);
       const family = getComputedStyle(document.body).fontFamily || "Inter, sans-serif";
-      // On narrow/portrait screens (e.g. mobile), split on spaces so each word stays large
-      const isPortrait = w / h < 0.95 && text.includes(" ");
-      const lines = isPortrait ? text.split(" ") : [text];
 
-      let size = h * (lines.length > 1 ? 0.32 : 0.62);
-      ctx.font = `900 ${size}px ${family}`;
-      if ("letterSpacing" in ctx) {
-        (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = "-0.04em";
-      }
-      const maxMeasured = Math.max(...lines.map((l) => ctx.measureText(l).width));
-      size = Math.min(size, (size * (w * 0.94)) / Math.max(1, maxMeasured));
-      if (lines.length > 1) {
-        const totalHeight = size * lines.length * 0.95;
-        if (totalHeight > h * 0.72) {
-          size *= (h * 0.72) / totalHeight;
-        }
-      }
-
-      ctx.font = `900 ${size}px ${family}`;
       ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
       ctx.fillStyle = "#000";
 
-      if (lines.length > 1) {
-        const lineSpacing = size * 0.92;
-        const startY = h / 2 - ((lines.length - 1) * lineSpacing) / 2;
-        lines.forEach((line, i) => {
-          ctx.fillText(line, w / 2, startY + i * lineSpacing);
-        });
+      const hasSubtitle = text.includes(" ");
+      if (hasSubtitle) {
+        // "AAA" and "isolutions" balanced with matching width and exact optical centering
+        const parts = text.split(" ");
+        const primary = parts[0];
+        const secondary = parts.slice(1).join(" ");
+
+        const compact = w < 768;
+
+        // Measure width ratio at 100px test font
+        ctx.font = `900 100px ${family}`;
+        if ("letterSpacing" in ctx) {
+          (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = "-0.03em";
+        }
+        const wP100 = ctx.measureText(primary).width;
+
+        ctx.font = `900 100px ${family}`;
+        if ("letterSpacing" in ctx) {
+          (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = "-0.02em";
+        }
+        const wS100 = ctx.measureText(secondary).width;
+
+        // Target matching width for both lines so left and right edges align flush
+        let targetW = w * (compact ? 0.90 : 0.78);
+        const maxH = h * (compact ? 0.52 : 0.58);
+
+        let sizeP = targetW * (100 / Math.max(1, wP100));
+        let sizeS = targetW * (100 / Math.max(1, wS100));
+
+        // Compute heights and gap
+        let capH = sizeP * 0.72;
+        let ascH = sizeS * 0.74;
+        let gap = sizeP * 0.08;
+        let totalH = capH + gap + ascH;
+
+        if (totalH > maxH) {
+          const scale = maxH / totalH;
+          sizeP *= scale;
+          sizeS *= scale;
+          capH *= scale;
+          ascH *= scale;
+          gap *= scale;
+          totalH = maxH;
+        }
+
+        // Center perfectly within the vertical viewport
+        const yTop = h / 2 - totalH / 2;
+        const baselineP = yTop + capH;
+        const baselineS = baselineP + gap + ascH;
+
+        ctx.textBaseline = "alphabetic";
+
+        // Draw primary line ("AAA")
+        ctx.font = `900 ${sizeP}px ${family}`;
+        if ("letterSpacing" in ctx) {
+          (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = "-0.03em";
+        }
+        ctx.fillText(primary, w / 2, baselineP);
+
+        // Draw secondary line ("isolutions")
+        ctx.font = `900 ${sizeS}px ${family}`;
+        if ("letterSpacing" in ctx) {
+          (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = "-0.02em";
+        }
+        ctx.fillText(secondary, w / 2, baselineS);
       } else {
+        ctx.textBaseline = "middle";
+        let size = h * 0.62;
+        ctx.font = `900 ${size}px ${family}`;
+        if ("letterSpacing" in ctx) {
+          (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = "-0.04em";
+        }
+        const measured = ctx.measureText(text).width;
+        size = Math.min(size, (size * (w * 0.94)) / Math.max(1, measured));
+        ctx.font = `900 ${size}px ${family}`;
         ctx.fillText(text, w / 2, h / 2 + size * 0.02);
       }
+
       const url = m.toDataURL("image/png");
       canvas.style.maskImage = `url(${url})`;
       canvas.style.maskSize = "100% 100%";
@@ -455,7 +505,7 @@ export default function TunnelIntro({ text = "AAA isolutions" }: { text?: string
       onUpdate: (self) => {
         progress = self.progress;
         /* nav returns as the hero arrives */
-        document.body.classList.toggle("intro-active", self.progress < 0.94);
+        document.body.classList.toggle("intro-active", self.progress < 0.90);
         /* progress rail */
         const stage = Math.min(STAGES, 1 + Math.floor(self.progress * STAGES));
         if (stage !== stageShown && stageEl) {
@@ -502,7 +552,12 @@ export default function TunnelIntro({ text = "AAA isolutions" }: { text?: string
         {webglOk ? (
           <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
         ) : (
-          <span className={styles.fallback}>{text}</span>
+          <div className={styles.fallback}>
+            <span className={styles.fallbackMain}>{text.split(" ")[0]}</span>
+            {text.includes(" ") && (
+              <span className={styles.fallbackSub}>{text.split(" ").slice(1).join(" ")}</span>
+            )}
+          </div>
         )}
         <h1 className={styles.srOnly}>{text}</h1>
 

@@ -29,6 +29,7 @@ export const DICT: Record<string, Entry> = {
   "nav.home": { en: "Home", fr: "Accueil" },
   "nav.about": { en: "About", fr: "À propos" },
   "nav.work": { en: "Work", fr: "Projets" },
+  "nav.featured": { en: "All Projects", fr: "Tous les projets" },
   "nav.contact": { en: "Contact", fr: "Contact" },
   "nav.menu": { en: "Open menu", fr: "Ouvrir le menu" },
   "nav.close": { en: "Close menu", fr: "Fermer le menu" },
@@ -117,6 +118,7 @@ export const DICT: Record<string, Entry> = {
   },
   "work.open": { en: "Open case study", fr: "Voir l’étude de cas" },
   "work.hint": { en: "SCROLL TO BROWSE", fr: "FAITES DÉFILER" },
+  "work.allProjects": { en: "Explore all featured projects", fr: "Explorer tous les projets" },
 
   /* ---------------- experience ---------------- */
   "exp.eyebrow": { en: "Experience", fr: "Expérience" },

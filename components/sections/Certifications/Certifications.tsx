@@ -213,7 +213,7 @@ export default function Certifications() {
           introduction slide standing in for a heading. */}
       <div className={styles.head}>
         <p className={styles.eyebrow}>
-          <span>06</span> {t("cert.eyebrow")}
+          <span>03</span> {t("cert.eyebrow")}
         </p>
         <h2 className={styles.h2}>{t("cert.h2")}</h2>
         <p className={styles.lede}>{t("cert.lede")}</p>

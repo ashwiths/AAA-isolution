@@ -21,15 +21,26 @@
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-weight: 900;
-  font-size: clamp(32px, 9vw, 130px);
-  letter-spacing: -0.04em;
-  color: var(--ink);
   user-select: none;
   text-align: center;
   padding: 0 20px;
+}
+.fallbackMain {
+  font-weight: 900;
+  font-size: clamp(64px, 22vw, 320px);
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  color: var(--ink);
+}
+.fallbackSub {
+  font-weight: 900;
+  font-size: clamp(26px, 9.5vw, 145px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-top: clamp(6px, 1.2vw, 18px);
 }
 
 .srOnly {

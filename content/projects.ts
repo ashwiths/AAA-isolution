@@ -71,26 +71,27 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
-  /* ─────────────── 1 · HEEDING (kept) ─────────────── */
+  /* ─────────────── 1 · WEBSITE DEVELOPMENT ─────────────── */
   {
     slug: "heeding-marketplace",
-    title: "Heeding — Sustainable-Fuel Marketplace",
-    tags: ["UX Research", "Design System", "Climate-Tech"],
+    title: "Website Development",
+    tags: ["Website Development", "React / Next.js", "UX & SEO"],
     year: "2026",
     oneLiner:
-      "Designing the B2B marketplace UX for Europe's energy transition — turning fuel compliance, traceability and pricing complexity into a product people can actually use.",
+      "We build high-performance, visually stunning websites that not only look great but also drive results. From simple brochure sites to complex web applications, our team uses the latest technologies to ensure your online presence is robust, secure, and scalable. We focus on user experience, SEO, and conversion optimization to help your business grow.",
     contribution:
-      "End-to-end marketplace UX — three buyer journeys, one governed design system.",
-    coverLabel: "HEEDING MARKETPLACE",
+      "Custom, responsive websites tailored to your brand's unique needs — robust, secure, and scalable.",
+    coverLabel: "WEBSITE DEVELOPMENT",
     /* official Heeding lockup (supplied file) on a light brand ground */
     cover: { bg: "#E9F2FC", ink: "dark", src: "/images/companies/heeding.png", aspect: 1199 / 330 },
     site: { url: "https://www.myheeding.com/en", label: "myheeding.com" },
     fr: {
-      title: "Heeding — Marketplace de carburants durables",
-      oneLiner: "Concevoir l’UX B2B de la transition énergétique européenne — transformer conformité, traçabilité et tarification en un produit réellement utilisable.",
+      title: "Développement Web",
+      oneLiner:
+        "Nous créons des sites web performants et visuellement captivants qui génèrent des résultats concrets, du site vitrine à l'application web complexe.",
       contribution:
-        "L’UX de la marketplace de bout en bout — trois parcours, un design system.",
-      tags: ["Recherche UX", "Design System", "Climate-Tech"],
+        "Des sites web sur mesure et réactifs, conçus pour optimiser conversion et expérience utilisateur.",
+      tags: ["Développement Web", "React / Next.js", "UX & SEO"],
       study: {
         role: "Product Designer & consultant UX",
         timeline: "Mai – oct. 2026 · en cours",
@@ -190,26 +191,27 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 2 · LOCKAI / UNBIAS (kept) ─────────────── */
+  /* ─────────────── 2 · SOFTWARE DEVELOPMENT ─────────────── */
   {
     slug: "lockai",
-    title: "LockAI — Offline On-Device AI Assistant",
-    tags: ["Product Strategy", "UX/UI", "Prototyping"],
+    title: "Software Development",
+    tags: ["Software Development", "CRM & ERP", "Custom Systems"],
     year: "2026",
     oneLiner:
-      "Product strategy, UX and three live prototypes in one sprint — a privacy-first AI assistant that won the hackathon.",
+      "Our software development services are designed to solve complex business challenges. We develop custom software solutions that streamline operations, improve efficiency, and foster innovation. Whether you need a CRM, ERP, or a custom internal tool, we deliver reliable and scalable software tailored to your specific requirements.",
     contribution:
-      "Strategy, UX and three working prototypes — a pitch the jury could click.",
-    coverLabel: "LOCKAI",
+      "Scalable, robust software solutions to drive your business forward — CRM, ERP, and custom internal tools.",
+    coverLabel: "SOFTWARE DEVELOPMENT",
     /* official UNBIAS wordmark (supplied file) on a light violet ground */
     cover: { bg: "#F0EBFD", ink: "dark", src: "/images/companies/unbias.png", aspect: 685 / 226 },
-    award: "🏆 1st Place",
+    award: "🏆 Scalable & Secure",
     fr: {
-      title: "LockAI — Assistant IA hors-ligne",
-      oneLiner: "Stratégie produit, UX et trois prototypes en un sprint — un assistant IA priorisant la confidentialité, lauréat du hackathon.",
+      title: "Développement Logiciel",
+      oneLiner:
+        "Nos services de développement logiciel résolvent des défis opérationnels complexes grâce à des solutions sur mesure et évolutives.",
       contribution:
-        "Stratégie, UX et trois prototypes — un pitch que le jury pouvait cliquer.",
-      tags: ["Stratégie produit", "UX/UI", "Prototypage"],
+        "Des outils internes, CRM et ERP fiables et évolutifs adaptés à vos exigences.",
+      tags: ["Développement Logiciel", "CRM & ERP", "Systèmes sur mesure"],
       study: {
         role: "Responsable produit & innovation IA",
         timeline: "Mars 2026 · sprint intensif",
@@ -289,24 +291,25 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 4 · PRICE INTELLIGENCE ─────────────── */
+  /* ─────────────── 3 · MOBILE APP DEVELOPMENT ─────────────── */
   {
     slug: "price-intelligence",
-    title: "Supply-Chain Price Intelligence",
-    tags: ["Data-Product Design", "Power BI", "KPI Design"],
-    year: "2025",
+    title: "Mobile App Development",
+    tags: ["Mobile Apps", "React Native", "Flutter / iOS & Android"],
+    year: "2026",
     oneLiner:
-      "Designing complex data into decisions — a price-intelligence dashboard non-technical users actually use.",
+      "Reach your customers wherever they are with our top-tier mobile app development services. We create intuitive, engaging, and high-performance mobile applications for both iOS and Android platforms. Using technologies like React Native and Flutter, as well as native languages, we ensure a seamless user experience across all devices.",
     contribution:
-      "KPI hierarchy and comparison-first views — pricing data into decisions.",
-    coverLabel: "PRICE INTELLIGENCE",
-    cover: { bg: "#0E1F38", ink: "light", mark: "KPI" },
+      "Native and cross-platform mobile apps for iOS and Android — intuitive, engaging, and high-performance.",
+    coverLabel: "MOBILE APP DEVELOPMENT",
+    cover: { bg: "#0E1F38", ink: "light", mark: "APPS" },
     fr: {
-      title: "Intelligence tarifaire de la chaîne logistique",
-      oneLiner: "Transformer des données complexes en décisions — un tableau de bord que les profils non techniques utilisent vraiment.",
+      title: "Développement d’Applications Mobiles",
+      oneLiner:
+        "Touchez vos clients partout avec nos applications mobiles haut de gamme, intuitives et performantes sur iOS et Android.",
       contribution:
-        "Hiérarchie de KPI et vues comparatives — la donnée devient décision.",
-      tags: ["Design de produit data", "Power BI", "Design de KPI"],
+        "Applications iOS et Android fluides et engageantes sous React Native et Flutter.",
+      tags: ["Applications Mobiles", "React Native", "iOS & Android"],
       study: {
         role: "Designer de produit data",
         timeline: "2025 · projet portfolio",
@@ -386,24 +389,25 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 5 · OIGETIT ─────────────── */
+  /* ─────────────── 4 · E-COMMERCE DEVELOPMENT ─────────────── */
   {
     slug: "oigetit-hitl",
-    title: "Oigetit — The UX of AI Trust",
-    tags: ["Responsible AI", "UX Writing", "Validation"],
-    year: "2025",
+    title: "E-commerce Development",
+    tags: ["E-Commerce", "Shopify / WooCommerce", "Payment Gateways"],
+    year: "2026",
     oneLiner:
-      "Making an AI misinformation filter explainable — trust as a design material.",
+      "Transform your retail business with our comprehensive e-commerce solutions. We build secure, scalable, and user-friendly online stores that provide an exceptional shopping experience. From platform selection (Shopify, WooCommerce, Magento) to custom payment gateway integration, we handle everything to get you selling online effectively.",
     contribution:
-      "Edge cases validated, verdicts rewritten in human language.",
-    coverLabel: "AI TRUST UX",
+      "Secure, high-converting online stores built on modern platforms.",
+    coverLabel: "E-COMMERCE DEVELOPMENT",
     cover: { bg: "#EAF0F8", ink: "dark", src: "/images/companies/oigetit.jpg", aspect: 1 },
     fr: {
-      title: "Oigetit — L’UX de la confiance en l’IA",
-      oneLiner: "Rendre explicable un filtre anti-désinformation — la confiance comme matière de design.",
+      title: "Développement E-commerce",
+      oneLiner:
+        "Boutiques en ligne sécurisées et à fort taux de conversion, conçues sur les plateformes les plus modernes.",
       contribution:
-        "Cas limites validés, verdicts réécrits en langage humain.",
-      tags: ["IA responsable", "UX writing", "Validation"],
+        "Boutiques en ligne sécurisées et performantes (Shopify, WooCommerce, sur-mesure).",
+      tags: ["E-Commerce", "Shopify / WooCommerce", "Paiements sécurisés"],
       study: {
         role: "Analyste IA avec humain dans la boucle",
         timeline: "Janv. – mai 2025 · à distance (Los Gatos, USA)",
@@ -467,24 +471,25 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 6 · WEB PERFORMANCE ─────────────── */
+  /* ─────────────── 5 · UI/UX DESIGN ─────────────── */
   {
     slug: "seo-growth",
-    title: "Portfolio-Wide Web Performance",
-    tags: ["CRO", "Analytics", "Web"],
-    year: "2025",
+    title: "UI/UX Design",
+    tags: ["UI/UX Design", "Wireframing & Prototyping", "Design Systems"],
+    year: "2026",
     oneLiner:
-      "35% organic growth across a client portfolio — design decisions driven by measurement.",
+      "Great design is about more than just aesthetics; it's about how it works. Our UI/UX design process centers on understanding your users and their needs. We create intuitive interfaces and seamless user journeys that increase engagement and satisfaction. From wireframing to high-fidelity prototyping, we bring your vision to life.",
     contribution:
-      "Template-level fixes across a client portfolio — one fix, hundreds of pages.",
-    coverLabel: "GROWTH & CRO",
-    cover: { bg: "#FF6A00", ink: "light", mark: "+35%" },
+      "User-centric designs that create engaging digital experiences.",
+    coverLabel: "UI/UX DESIGN",
+    cover: { bg: "#FF6A00", ink: "light", mark: "UI/UX" },
     fr: {
-      title: "Performance web du portefeuille",
-      oneLiner: "+35 % de croissance organique sur un portefeuille client — des décisions de design guidées par la mesure.",
+      title: "Design UI/UX",
+      oneLiner:
+        "Des designs centrés sur l'utilisateur créant des expériences numériques captivantes, intuitives et mémorables.",
       contribution:
-        "Corrections au niveau des gabarits — une correction, des centaines de pages.",
-      tags: ["CRO", "Analytics", "Web"],
+        "Des interfaces intuitives et des parcours utilisateurs sans friction qui maximisent l'engagement.",
+      tags: ["Design UI/UX", "Wireframing & Prototypage", "Design Systems"],
       study: {
         role: "SEO & performance web",
         timeline: "Janv. – avr. 2025 · Site Web & Co, Montpellier",
@@ -550,17 +555,17 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 8 · AVENGERS: DOOMSDAY (GitHub) ─────────────── */
+  /* ─────────────── 6 · SEO ─────────────── */
   {
     slug: "avengers-doomsday",
-    title: "Avengers: Doomsday — Scroll-Driven Cinema",
-    tags: ["Three.js", "GSAP", "Creative Dev"],
+    title: "SEO",
+    tags: ["Technical SEO", "Organic Traffic", "Content & Link Building"],
     year: "2026",
     oneLiner:
-      "A Marvel-inspired cinematic web experience where scroll conducts everything — video, 3D and story across six choreographed sections.",
+      "Increase your visibility and drive organic traffic with our expert SEO services. We use data-driven strategies to improve your search engine rankings. Our comprehensive approach includes technical SEO, on-page optimization, content strategy, and link building to ensure long-term growth and higher ROI.",
     contribution:
-      "Six scroll-choreographed scenes, a 3D Doom, frame-exact video scrubbing.",
-    coverLabel: "AVENGERS: DOOMSDAY",
+      "Data-driven strategies to improve visibility and organic traffic.",
+    coverLabel: "SEO & VISIBILITY",
     cover: {
       bg: "#0B0B0E",
       ink: "light",
@@ -570,12 +575,12 @@ export const PROJECTS: Project[] = [
     },
     repo: "https://github.com/gireeshkumarreddy/AVENGERS-DOOMSDAY-",
     fr: {
-      title: "Avengers: Doomsday — Cinéma piloté au scroll",
+      title: "Référencement Naturel (SEO)",
       oneLiner:
-        "Une expérience web cinématique inspirée de Marvel où le scroll dirige tout — vidéo, 3D et récit sur six sections chorégraphiées.",
+        "Des stratégies basées sur les données pour décupler votre visibilité et votre trafic organique qualifié.",
       contribution:
-        "Six scènes chorégraphiées au scroll, un Doom 3D, un scrubbing vidéo exact.",
-      tags: ["Three.js", "GSAP", "Dév créatif"],
+        "Optimisation technique, stratégie de contenu et netlinking pour une croissance durable et mesurable.",
+      tags: ["SEO Technique", "Trafic Organique", "Netlinking"],
       study: {
         role: "Design & développement — solo",
         timeline: "Juillet 2026",
@@ -643,17 +648,17 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 4 · GAME OF THRONES (GitHub) ─────────────── */
+  /* ─────────────── 7 · GRAPHIC DESIGN ─────────────── */
   {
     slug: "got-cinematic",
-    title: "Game of Thrones — A Cinematic Experience",
-    tags: ["Video Scrubbing", "GSAP", "Vite"],
+    title: "Graphic Design",
+    tags: ["Graphic Design", "Branding & Identity", "Marketing Materials"],
     year: "2026",
     oneLiner:
-      "A scroll-scrubbed cinematic tribute that found its audience — 20.5K likes, 3,597 comments and 7,035 shares on one reel.",
+      "Make a lasting impression with our creative graphic design services. We craft visual identities that resonate with your target audience. From brochures and flyers to social media graphics and packaging, our designs are tailored to communicate your brand's message effectively and stylishly.",
     contribution:
-      "Frame-perfect scroll cinema — 20.5K likes and 7K shares on one reel.",
-    coverLabel: "GAME OF THRONES",
+      "Visual identity, branding, and marketing materials that stand out.",
+    coverLabel: "GRAPHIC DESIGN",
     cover: {
       bg: "#0B0B0E",
       ink: "light",
@@ -663,12 +668,12 @@ export const PROJECTS: Project[] = [
     },
     repo: "https://github.com/gireeshkumarreddy/GoT",
     fr: {
-      title: "Game of Thrones — Une expérience cinématique",
+      title: "Design Graphique",
       oneLiner:
-        "Un hommage cinématique piloté au scroll qui a trouvé son public — 20,5 K likes, 3 597 commentaires et 7 035 partages sur un reel.",
+        "Identité visuelle, branding et supports de communication percutants pour valoriser votre image de marque.",
       contribution:
-        "Un cinéma au scroll image par image — 20,5 K likes et 7 K partages.",
-      tags: ["Scrubbing vidéo", "GSAP", "Vite"],
+        "Créations graphiques complètes : identités, brochures, visuels digitaux et packagings soignés.",
+      tags: ["Design Graphique", "Branding", "Supports Marketing"],
       study: {
         role: "Design & développement — solo",
         timeline: "Juillet 2026",
@@ -734,26 +739,26 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 5 · BAAHUBALI (GitHub) ─────────────── */
+  /* ─────────────── 8 · LOGO DESIGN ─────────────── */
   {
     slug: "baahubali",
-    title: "Baahubali — A Legend Never Dies",
-    tags: ["Next.js", "Web Audio", "GSAP"],
+    title: "Logo Design",
+    tags: ["Logo Design", "Visual Identity", "Brand Guidelines"],
     year: "2026",
     oneLiner:
-      "Four chapters of scroll-driven cinema with procedural light and synthesised sound — 56K views on the launch reel.",
+      "Your logo is the face of your brand. We design memorable, timeless logos that encapsulate your brand's values and mission. Our process involves deep research and creative exploration to deliver a unique mark that sets you apart from the competition.",
     contribution:
-      "Four chapters where scroll drives the emotion — 56K views in one reel.",
-    coverLabel: "BAAHUBALI",
+      "Memorable logos that capture the essence of your brand.",
+    coverLabel: "LOGO DESIGN",
     cover: { bg: "#0B0B0E", ink: "light", src: "/images/projects/bahubali-cover.jpg", variant: "photo" },
     repo: "https://github.com/gireeshkumarreddy/Bahubali",
     fr: {
-      title: "Baahubali — Une légende ne meurt jamais",
+      title: "Création de Logos",
       oneLiner:
-        "Quatre chapitres de cinéma piloté au scroll, avec lumière procédurale et son synthétisé — 56 K vues sur le reel de lancement.",
+        "Des logos mémorables et intemporels qui capturent l'essence et les valeurs fondamentales de votre marque.",
       contribution:
-        "Quatre chapitres où le scroll porte l’émotion — 56 K vues en un reel.",
-      tags: ["Next.js", "Web Audio", "GSAP"],
+        "Des identités visuelles et logos uniques créés après une recherche créative approfondie.",
+      tags: ["Création de Logos", "Identité Visuelle", "Charte Graphique"],
       study: {
         role: "Design & développement — solo",
         timeline: "Juillet 2026",
@@ -821,17 +826,17 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 11 · GHOST RIDER (GitHub) ─────────────── */
+  /* ─────────────── 9 · BUSINESS CARD DESIGN ─────────────── */
   {
     slug: "ghost-rider",
-    title: "Ghost Rider — Spirit of Vengeance",
-    tags: ["WebGL", "GLSL", "Creative Dev"],
+    title: "Business Card Design",
+    tags: ["Business Cards", "Print Design", "Brand Identity"],
     year: "2026",
     oneLiner:
-      "A supernatural film you can touch — six chapters of scroll-directed cinema with procedural hellfire rendered in WebGL.",
+      "Even in the digital age, a well-designed business card is a powerful networking tool. We create professional, eye-catching business cards that represent your brand with elegance. Whether you prefer a minimalist look or something bold, we design cards that people want to keep.",
     contribution:
-      "Six chapters, procedural hellfire shaders, a chase you scroll through.",
-    coverLabel: "GHOST RIDER",
+      "Professional business cards that leave a lasting impression.",
+    coverLabel: "BUSINESS CARD DESIGN",
     cover: {
       bg: "#0B0B0E",
       ink: "light",
@@ -842,12 +847,12 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/gireeshkumarreddy/Ghost-Rider-",
     site: { url: "https://ghost-rider-orpin.vercel.app", label: "Live site" },
     fr: {
-      title: "Ghost Rider — Spirit of Vengeance",
+      title: "Cartes de Visite Professionnelles",
       oneLiner:
-        "Un film surnaturel que l’on touche — six chapitres de cinéma dirigé au scroll, avec un feu infernal procédural en WebGL.",
+        "Des cartes de visite professionnelles et élégantes qui marquent les esprits et subliment votre réseau.",
       contribution:
-        "Six chapitres, des shaders de feu procédural, une poursuite au scroll.",
-      tags: ["WebGL", "GLSL", "Dév créatif"],
+        "Supports d'impression soignés, finitions haut de gamme et designs personnalisés mémorables.",
+      tags: ["Cartes de Visite", "Print & Papeterie", "Identité de Marque"],
       study: {
         role: "Design & développement — solo",
         timeline: "Août 2026",
@@ -907,17 +912,17 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 12 · HABU (GitHub) ─────────────── */
+  /* ─────────────── 10 · STICKER DESIGN ─────────────── */
   {
     slug: "habu",
-    title: "HABU — Deep-Ocean Exosuit",
-    tags: ["Product Storytelling", "Next.js", "GSAP"],
+    title: "Sticker Design",
+    tags: ["Sticker Design", "Merchandise & Print", "Vibrant Branding"],
     year: "2026",
     oneLiner:
-      "A product launch page for a deep-ocean exosuit — a AAA game intro crossed with Apple product storytelling.",
+      "Add a fun, tangible element to your brand with custom sticker designs. Ideal for merchandise, packaging, or guerrilla marketing, our stickers are designed to be stuck everywhere. We create vibrant, durable designs that fans and customers will love to display.",
     contribution:
-      "Product storytelling in one scroll — inspection rig, specs, scene stack.",
-    coverLabel: "HABU EXOSUIT",
+      "Custom stickers for branding, merchandise, and fun.",
+    coverLabel: "STICKER DESIGN",
     cover: {
       bg: "#06131C",
       ink: "light",
@@ -927,12 +932,12 @@ export const PROJECTS: Project[] = [
     },
     repo: "https://github.com/gireeshkumarreddy/HABU-",
     fr: {
-      title: "HABU — Exosquelette des grands fonds",
+      title: "Design de Stickers & Autocollants",
       oneLiner:
-        "Une page de lancement pour un exosquelette sous-marin — une intro de jeu AAA croisée avec le storytelling produit d’Apple.",
+        "Des autocollants sur mesure, durables et captivants pour valoriser votre marque et vos packagings.",
       contribution:
-        "Du storytelling produit en un scroll — inspection, specs, empilement.",
-      tags: ["Storytelling produit", "Next.js", "GSAP"],
+        "Designs d'autocollants percutants pour merchandising, packaging et marketing.",
+      tags: ["Design de Stickers", "Print & Goodies", "Branding"],
       study: {
         role: "Design & développement — solo",
         timeline: "Juillet 2026",
@@ -998,26 +1003,26 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 13 · VISTARAIL (GitHub) ─────────────── */
+  /* ─────────────── 11 · POSTER DESIGN ─────────────── */
   {
     slug: "vistarail",
-    title: "VistaRail — Night-Train Travel, Imagined",
-    tags: ["Brand Concept", "Next.js", "Framer Motion"],
+    title: "Poster Design",
+    tags: ["Poster Design", "Events & Launches", "Marketing Collateral"],
     year: "2026",
     oneLiner:
-      "A luxury scenic-rail brand designed end to end — a cinematic video hero, glassmorphism UI and motion that sells a feeling, not a ticket.",
+      "Grab attention instantly with our dynamic poster designs. Perfect for events, product launches, or promotional campaigns, our posters are designed to stop people in their tracks. We combine compelling visuals with persuasive copy to drive your message home.",
     contribution:
-      "A luxury rail brand imagined end to end — video hero, glass UI, parallax.",
-    coverLabel: "VISTARAIL",
+      "Eye-catching posters for events, promotions, and marketing.",
+    coverLabel: "POSTER DESIGN",
     cover: { bg: "#0B0B0E", ink: "light", src: "/images/projects/vistarail-cover.jpg", variant: "photo" },
     repo: "https://github.com/gireeshkumarreddy/vistaRail",
     fr: {
-      title: "VistaRail — Le train de nuit, imaginé",
+      title: "Création d’Affiches & Posters",
       oneLiner:
-        "Une marque de rail panoramique de luxe conçue de bout en bout — héros vidéo cinématique, interface de verre et un mouvement qui vend une sensation, pas un billet.",
+        "Des affiches dynamiques et percutantes conçues pour capter immédiatement l'attention lors d'événements et de lancements.",
       contribution:
-        "Une marque ferroviaire de luxe imaginée de bout en bout — verre et parallaxe.",
-      tags: ["Concept de marque", "Next.js", "Framer Motion"],
+        "Visuels captivants et typographie percutante pour promouvoir vos événements.",
+      tags: ["Création d'Affiches", "Événementiel", "Marketing Visuel"],
       study: {
         role: "Design & développement — solo",
         timeline: "Juillet 2026",
@@ -1083,27 +1088,27 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 7 · RÊVERIE (GitHub) ─────────────── */
+  /* ─────────────── 12 · PRESENTATION DESIGN ─────────────── */
   {
     slug: "reverie",
-    title: "Rêverie — A Waking Dream",
-    tags: ["Art Direction", "Next.js", "Framer Motion"],
+    title: "Presentation Design",
+    tags: ["Presentation Design", "Pitch Decks", "Data Storytelling"],
     year: "2026",
     oneLiner:
-      "An original cinematic concept — light, stillness and editorial motion — designed, built and live on the web.",
+      "Win your audience over with professionally designed presentations. We turn complex data and ideas into clear, visually engaging slides. Whether it's a pitch deck, a corporate report, or a conference keynote, we ensure your presentation looks polished and persuasive.",
     contribution:
-      "An original dream, shipped — cinematic scroll, glass, live on the web.",
-    coverLabel: "RÊVERIE",
+      "Compelling slide decks that communicate your ideas effectively.",
+    coverLabel: "PRESENTATION DESIGN",
     cover: { bg: "#0B0B0E", ink: "light", src: "/images/projects/reverie-cover.jpg", variant: "photo" },
     site: { url: "https://musical-tanuki-680d11.netlify.app", label: "Live site" },
     repo: "https://github.com/gireeshkumarreddy/R-VERIE-A-Waking-Dream",
     fr: {
-      title: "Rêverie — Un rêve éveillé",
+      title: "Design de Présentations & Pitch Decks",
       oneLiner:
-        "Un concept cinématique original — lumière, immobilité et mouvement éditorial — conçu, construit et en ligne.",
+        "Des présentations percutantes et soignées qui transforment vos données et idées en diapositives claires et persuasives.",
       contribution:
-        "Un rêve original, en ligne — scroll cinématique, verre, sur le web.",
-      tags: ["Direction artistique", "Next.js", "Framer Motion"],
+        "Pitch decks, rapports d'entreprise et keynotes persuasifs qui captivent l'audience.",
+      tags: ["Design de Présentation", "Pitch Decks", "Storytelling Visuel"],
       study: {
         role: "Direction artistique & développement — solo",
         timeline: "Juillet 2026",
@@ -1169,24 +1174,25 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 14 · AUTOMATION SYSTEM (kept) ─────────────── */
+  /* ─────────────── 13 · EMAIL DESIGN ─────────────── */
   {
     slug: "workflow-automation",
-    title: "Supply Chain & Sales Marketing Automation System",
-    tags: ["Service Design", "Systems", "n8n"],
-    year: "2025",
+    title: "Email Design",
+    tags: ["Email Design", "HTML Templates", "CRO & Click-Through"],
+    year: "2026",
     oneLiner:
-      "Designing the invisible product — automated workflows that removed manual effort across an entire funnel.",
+      "Boost your email marketing campaigns with custom-designed email templates. We create responsive, on-brand emails that look great on any device. Focus on readability and call-to-action placement to maximize open rates and conversions.",
     contribution:
-      "The human process mapped, the robot work designed away — and inspectable.",
-    coverLabel: "AUTOMATION SYSTEM",
-    cover: { bg: "#101a12", ink: "light", mark: "FLOW" },
+      "Beautiful email templates that drive engagement and clicks.",
+    coverLabel: "EMAIL DESIGN",
+    cover: { bg: "#101a12", ink: "light", mark: "EMAIL" },
     fr: {
-      title: "Système d’automatisation supply chain & ventes-marketing",
-      oneLiner: "Concevoir le produit invisible — des workflows automatisés qui suppriment le travail manuel sur tout le tunnel.",
+      title: "Design d’Emails & Newsletters",
+      oneLiner:
+        "Des gabarits d'emails élégants, responsives et orientés conversion pour décupler vos taux d'ouverture et de clics.",
       contribution:
-        "Processus humain cartographié, travail de robot supprimé — et inspectable.",
-      tags: ["Design de service", "Systèmes", "n8n"],
+        "Templates d'emails réactifs et engageants optimisés pour la conversion et la lisibilité.",
+      tags: ["Design d'Emails", "Newsletters", "Taux de Clic"],
       study: {
         role: "Designer de service & de systèmes",
         timeline: "2025 · projet portfolio",
@@ -1266,28 +1272,25 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  /* ─────────────── 15 · SPIDER-MAN (visual showcase, no repo) ───────────────
-     Deliberately has neither `site` nor `repo`: no public URL exists, and the
-     rule is never to invent one. The panel is identical in every other way —
-     same cover treatment, typography, arc position and hover language. */
+  /* ─────────────── 14 · LANDING PAGE DESIGN ─────────────── */
   {
     slug: "spider-man",
-    title: "Spider-Man — The Power Behind the Mask",
-    tags: ["Cinematic Web", "Art Direction", "Visual"],
+    title: "Landing Page Design",
+    tags: ["Landing Pages", "Conversion Optimization", "High-Performance UX"],
     year: "2026",
     oneLiner:
-      "A cinematic fan experience about the person under the suit — built to see how far restraint carries an action property.",
+      "Turn visitors into leads with our high-converting landing page designs. We adhere to best practices in CRO (Conversion Rate Optimization) to create focused, persuasive pages. From headline to footer, every element is crafted to guide the user towards taking action.",
     contribution:
-      "Art direction and cinematic build — the quiet frame, not the fight.",
-    coverLabel: "SPIDER-MAN",
+      "High-performance landing pages optimized for conversion.",
+    coverLabel: "LANDING PAGE DESIGN",
     cover: { bg: "#0B0B0E", ink: "light", src: "/images/projects/spiderman-cover.jpg", variant: "photo" },
     fr: {
-      title: "Spider-Man — Le pouvoir derrière le masque",
+      title: "Design de Landing Pages",
       oneLiner:
-        "Une expérience cinématique de fan sur la personne sous le costume — pour voir jusqu’où la retenue porte une licence d’action.",
+        "Des pages d'atterrissage haute performance optimisées pour transformer vos visiteurs en clients qualifiés.",
       contribution:
-        "Direction artistique et build cinématique — le calme, pas le combat.",
-      tags: ["Web cinématique", "Direction artistique", "Visuel"],
+        "Landing pages persuasives conçues selon les meilleures pratiques du CRO.",
+      tags: ["Landing Pages", "Optimisation de Conversion", "UX Haute Performance"],
       study: {
         role: "Direction artistique & développement — solo",
         timeline: "Juin 2026",

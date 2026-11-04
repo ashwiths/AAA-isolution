@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap, prefersReducedMotion, EASE } from "@/lib/gsap";
+import { sceneScrub } from "@/lib/scene";
 import Button from "@/components/ui/Button";
 import styles from "./Hero.module.css";
 import { useLang } from "@/lib/i18n";
@@ -150,14 +151,16 @@ export default function Hero() {
       };
       window.addEventListener("mousemove", onMove);
 
-      /* ---------- Scroll: gentle layered exit ---------- */
+      /* ---------- Scroll: gentle layered exit across its runway ---------- */
       gsap
         .timeline({
-          scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true },
+          scrollTrigger: { ...sceneScrub(el), scrub: true },
         })
-        .to(`.${styles.head}`, { y: -60, autoAlpha: 0.2 }, 0)
-        .to(`.${styles.arch}`, { y: 50 }, 0)
-        .to([`.${styles.sideL}`, `.${styles.sideR}`], { y: -34 }, 0)
+        .to(`.${styles.head}`, { y: -50, autoAlpha: 0.2 }, 0)
+        .to(`.${styles.arch}`, { y: 40 }, 0)
+        .to(`.${styles.portrait}`, { y: 30, autoAlpha: 0.6 }, 0)
+        .to([`.${styles.sideL}`, `.${styles.sideR}`], { y: -30, autoAlpha: 0.5 }, 0)
+        .to(`.${styles.scrollCue}`, { autoAlpha: 0 }, 0)
         .to(`.${styles.ambient}`, { autoAlpha: 0 }, 0);
 
       return () => window.removeEventListener("mousemove", onMove);
@@ -167,7 +170,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className={styles.hero} id="home" ref={root}>
+    <section className={styles.hero} id="hero" ref={root}>
       {/* ---- ambient composition: glows, geometry, particles ---- */}
       <div className={styles.ambient} aria-hidden="true">
         <span className={`${styles.glow} ${styles.glowL}`} data-depth="0.012" />
@@ -201,7 +204,7 @@ export default function Hero() {
           <Button href="#work" variant="primary" arrow>
             {t("hero.cta1")}
           </Button>
-          <Button href="#about" variant="ghost" lead={<span className={styles.play}>▶</span>}>
+          <Button href="#stack" variant="ghost" lead={<span className={styles.play}>▶</span>}>
             {t("hero.cta2")}
           </Button>
         </div>

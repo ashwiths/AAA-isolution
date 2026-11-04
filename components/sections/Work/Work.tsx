@@ -8,6 +8,7 @@
  */
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap, ScrollTrigger, prefersReducedMotion, EASE } from "@/lib/gsap";
 import { sceneScrub } from "@/lib/scene";
 import { PROJECTS } from "@/content/projects";
@@ -102,7 +103,7 @@ export default function Work() {
     <section className={styles.work} id="work" ref={root}>
       <div className={styles.header}>
         <p className={styles.eyebrow}>
-          <span>04</span> {t("work.eyebrow")}
+          <span>01</span> {t("work.eyebrow")}
         </p>
         <div className={styles.headRow}>
           <h2 className={styles.h2}>
@@ -199,6 +200,10 @@ export default function Work() {
           ))}
         </div>
         <span className={styles.hint}>{t("work.hint")}</span>
+      </div>
+
+      <div className={styles.viewAll}>
+        <Link href="/work">{t("work.allProjects")} <i aria-hidden="true">↗</i></Link>
       </div>
     </section>
   );

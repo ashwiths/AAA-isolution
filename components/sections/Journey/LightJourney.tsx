@@ -407,7 +407,7 @@ export default function LightJourney() {
             <div className={styles.overlay} aria-hidden="true">
               <div className={styles.intro}>
                 <p className={styles.introLabel}>
-                  <span>02</span> {t("journey.eyebrow")}
+                  <span>03</span> {t("journey.eyebrow")}
                 </p>
                 <p className={styles.introLede}>{t("journey.lede")}</p>
                 <p className={styles.introHint}>{t("journey.enter")}</p>

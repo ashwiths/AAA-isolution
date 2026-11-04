@@ -114,7 +114,7 @@ export default function About() {
       <div className={styles.wrap}>
         <div className={styles.header}>
           <p className={styles.eyebrow}>
-            <span>01</span> {t("about.eyebrow")}
+            <span>02</span> {t("about.eyebrow")}
           </p>
           <h2 className={styles.h2}>
             {t("about.h2a")}<br />
