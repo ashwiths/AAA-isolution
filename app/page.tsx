@@ -39,7 +39,7 @@ export default function Home() {
             cinematic frames on phones too. The rest release into normal flow —
             their mobile layouts are tall and a fixed frame would clip them. */}
         <Scene order={1} runway={6} id="intro" keepOnMobile>
-          <TunnelIntro />
+          <TunnelIntro text="AAA isolutions" />
         </Scene>
 
         <Scene order={2} id="hero">

@@ -62,7 +62,7 @@ type Props = {
   text?: string;
 };
 
-export default function TunnelType({ text = "GIREESH" }: Props) {
+export default function TunnelType({ text = "AAA isolutions" }: Props) {
   const frameRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [webglOk, setWebglOk] = useState(true);
@@ -282,20 +282,39 @@ export default function TunnelType({ text = "GIREESH" }: Props) {
 
       const family =
         getComputedStyle(document.body).fontFamily || "Inter, sans-serif";
-      /* fit the word to 94% of the frame width */
-      let size = h * 0.62;
+
+      const isPortrait = w / h < 0.95 && text.includes(" ");
+      const lines = isPortrait ? text.split(" ") : [text];
+
+      let size = h * (lines.length > 1 ? 0.32 : 0.62);
       ctx.font = `900 ${size}px ${family}`;
       if ("letterSpacing" in ctx) {
         (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing =
           "-0.04em";
       }
-      const measured = ctx.measureText(text).width;
-      size = Math.min(size, (size * (w * 0.94)) / Math.max(1, measured));
+      const maxMeasured = Math.max(...lines.map((l) => ctx.measureText(l).width));
+      size = Math.min(size, (size * (w * 0.94)) / Math.max(1, maxMeasured));
+      if (lines.length > 1) {
+        const totalHeight = size * lines.length * 0.95;
+        if (totalHeight > h * 0.72) {
+          size *= (h * 0.72) / totalHeight;
+        }
+      }
+
       ctx.font = `900 ${size}px ${family}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = "#000";
-      ctx.fillText(text, w / 2, h / 2 + size * 0.02);
+
+      if (lines.length > 1) {
+        const lineSpacing = size * 0.92;
+        const startY = h / 2 - ((lines.length - 1) * lineSpacing) / 2;
+        lines.forEach((line, i) => {
+          ctx.fillText(line, w / 2, startY + i * lineSpacing);
+        });
+      } else {
+        ctx.fillText(text, w / 2, h / 2 + size * 0.02);
+      }
 
       const url = m.toDataURL("image/png");
       canvas.style.maskImage = `url(${url})`;
