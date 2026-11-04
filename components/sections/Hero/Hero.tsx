@@ -224,10 +224,10 @@ export default function Hero() {
 
           <Image
             className={styles.portrait}
-            src="/images/portrait.png"
-            alt="Gireesh Kumar Reddy — Product Designer"
-            width={554}
-            height={573}
+            src="/images/hero-portrait-clean.png"
+            alt="AAA isolutions"
+            width={486}
+            height={457}
             priority
             data-depth="0.03"
           />

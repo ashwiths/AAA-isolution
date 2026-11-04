@@ -1,0 +1,3 @@
+Saved hero-portrait-clean.png, hero-portrait.png, portrait.png successfully!
+
+Cache cleared!

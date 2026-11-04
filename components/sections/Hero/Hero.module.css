@@ -242,9 +242,9 @@
   position: relative;
   z-index: 3;
   width: auto;
-  height: clamp(220px, 35vh, 390px);
+  height: clamp(280px, 45vh, 440px);
   max-height: 100%;
-  max-width: 92%;
+  max-width: 95%;
   object-fit: contain;
   object-position: bottom;
   filter: drop-shadow(0 36px 58px rgba(20, 20, 20, 0.17));

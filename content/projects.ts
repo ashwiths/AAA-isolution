@@ -82,8 +82,13 @@ export const PROJECTS: Project[] = [
     contribution:
       "Custom, responsive websites tailored to your brand's unique needs — robust, secure, and scalable.",
     coverLabel: "WEBSITE DEVELOPMENT",
-    /* official Heeding lockup (supplied file) on a light brand ground */
-    cover: { bg: "#E9F2FC", ink: "dark", src: "/images/companies/heeding.png", aspect: 1199 / 330 },
+    cover: {
+      bg: "#0B0B0E",
+      ink: "light",
+      src: "/images/projects/website-dev.jpg",
+      variant: "photo",
+      focus: "center 45%",
+    },
     site: { url: "https://www.myheeding.com/en", label: "myheeding.com" },
     fr: {
       title: "Développement Web",
@@ -202,8 +207,13 @@ export const PROJECTS: Project[] = [
     contribution:
       "Scalable, robust software solutions to drive your business forward — CRM, ERP, and custom internal tools.",
     coverLabel: "SOFTWARE DEVELOPMENT",
-    /* official UNBIAS wordmark (supplied file) on a light violet ground */
-    cover: { bg: "#F0EBFD", ink: "dark", src: "/images/companies/unbias.png", aspect: 685 / 226 },
+    cover: {
+      bg: "#0B0B0E",
+      ink: "light",
+      src: "/images/projects/software-dev.jpg",
+      variant: "photo",
+      focus: "center 40%",
+    },
     award: "🏆 Scalable & Secure",
     fr: {
       title: "Développement Logiciel",
@@ -302,7 +312,13 @@ export const PROJECTS: Project[] = [
     contribution:
       "Native and cross-platform mobile apps for iOS and Android — intuitive, engaging, and high-performance.",
     coverLabel: "MOBILE APP DEVELOPMENT",
-    cover: { bg: "#0E1F38", ink: "light", mark: "APPS" },
+    cover: {
+      bg: "#0B0B0E",
+      ink: "light",
+      src: "/images/projects/mobile-dev.jpg",
+      variant: "photo",
+      focus: "center 35%",
+    },
     fr: {
       title: "Développement d’Applications Mobiles",
       oneLiner:
@@ -400,7 +416,13 @@ export const PROJECTS: Project[] = [
     contribution:
       "Secure, high-converting online stores built on modern platforms.",
     coverLabel: "E-COMMERCE DEVELOPMENT",
-    cover: { bg: "#EAF0F8", ink: "dark", src: "/images/companies/oigetit.jpg", aspect: 1 },
+    cover: {
+      bg: "#0B0B0E",
+      ink: "light",
+      src: "/images/projects/ecommerce-dev.jpg",
+      variant: "photo",
+      focus: "center 40%",
+    },
     fr: {
       title: "Développement E-commerce",
       oneLiner:
@@ -569,9 +591,9 @@ export const PROJECTS: Project[] = [
     cover: {
       bg: "#0B0B0E",
       ink: "light",
-      src: "/images/projects/avengers-cover.jpg",
+      src: "/images/projects/seo-cover.jpg",
       variant: "photo",
-      focus: "center 26%", /* keeps the mask in frame */
+      focus: "center 40%",
     },
     repo: "https://github.com/gireeshkumarreddy/AVENGERS-DOOMSDAY-",
     fr: {
@@ -750,7 +772,13 @@ export const PROJECTS: Project[] = [
     contribution:
       "Memorable logos that capture the essence of your brand.",
     coverLabel: "LOGO DESIGN",
-    cover: { bg: "#0B0B0E", ink: "light", src: "/images/projects/bahubali-cover.jpg", variant: "photo" },
+    cover: {
+      bg: "#0B0B0E",
+      ink: "light",
+      src: "/images/projects/logo-design.jpg",
+      variant: "photo",
+      focus: "center 45%",
+    },
     repo: "https://github.com/gireeshkumarreddy/Bahubali",
     fr: {
       title: "Création de Logos",
@@ -838,11 +866,11 @@ export const PROJECTS: Project[] = [
       "Professional business cards that leave a lasting impression.",
     coverLabel: "BUSINESS CARD DESIGN",
     cover: {
-      bg: "#0B0B0E",
-      ink: "light",
-      src: "/images/projects/ghostrider-cover.jpg",
+      bg: "#E8C838",
+      ink: "dark",
+      src: "/images/projects/business-card-design.jpg",
       variant: "photo",
-      focus: "center 30%", /* the split face */
+      focus: "center 40%",
     },
     repo: "https://github.com/gireeshkumarreddy/Ghost-Rider-",
     site: { url: "https://ghost-rider-orpin.vercel.app", label: "Live site" },
@@ -924,11 +952,11 @@ export const PROJECTS: Project[] = [
       "Custom stickers for branding, merchandise, and fun.",
     coverLabel: "STICKER DESIGN",
     cover: {
-      bg: "#06131C",
+      bg: "#2A3A28",
       ink: "light",
-      src: "/images/projects/habu-cover.jpg",
+      src: "/images/projects/sticker-design.jpg",
       variant: "photo",
-      focus: "center 45%", /* the diver, with the signal above */
+      focus: "center 50%",
     },
     repo: "https://github.com/gireeshkumarreddy/HABU-",
     fr: {
@@ -1014,7 +1042,13 @@ export const PROJECTS: Project[] = [
     contribution:
       "Eye-catching posters for events, promotions, and marketing.",
     coverLabel: "POSTER DESIGN",
-    cover: { bg: "#0B0B0E", ink: "light", src: "/images/projects/vistarail-cover.jpg", variant: "photo" },
+    cover: {
+      bg: "#ECEAE6",
+      ink: "dark",
+      src: "/images/projects/poster-design.jpg",
+      variant: "photo",
+      focus: "center 40%",
+    },
     repo: "https://github.com/gireeshkumarreddy/vistaRail",
     fr: {
       title: "Création d’Affiches & Posters",
