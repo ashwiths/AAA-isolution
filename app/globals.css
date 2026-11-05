@@ -83,6 +83,12 @@ img {
   position: relative;
   z-index: 20;
   background: var(--bg, #fff);
+  min-height: 100svh;
+}
+
+#contact,
+.finalFrame {
+  scroll-margin-top: 0 !important;
 }
 
 a {

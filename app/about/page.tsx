@@ -4,9 +4,9 @@ import About from "@/components/sections/About/About";
 import Connect from "@/components/sections/Connect/Connect";
 
 export const metadata: Metadata = {
-  title: "About — From the Founder's Desk · AAA Solutions",
+  title: "About — From the Founder's Desk · AAA isolutions",
   description:
-    "Thoughts, ideas and updates from the journey of building, learning and growing at AAA solutions. Infant Ashil A, Founder & CEO.",
+    "Thoughts, ideas and updates from the journey of building, learning and growing at AAA isolutions. Infant Ashil A, Founder & CEO.",
 };
 
 export default function AboutPage() {

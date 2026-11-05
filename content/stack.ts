@@ -1,4 +1,4 @@
-/* My Design Stack — tools shown in the spiral orbit.
+/* Our Design Stack — tools shown in the spiral orbit.
    `src` uses a real logo from /public/images/logos when we have one;
    otherwise a brand-tinted monogram mark keeps the set visually uniform.
    To upgrade a monogram: drop an SVG/PNG in that folder and swap in `src`. */

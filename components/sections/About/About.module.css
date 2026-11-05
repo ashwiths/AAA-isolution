@@ -1,17 +1,17 @@
 /* ============ ABOUT SECTION — FROM THE FOUNDER'S DESK ============
    Full screen edge-to-edge presentation of the Founder's Desk banner
-   Infant Ashil A, Founder & CEO, AAA Solutions. */
+   Infant Ashil A, Founder & CEO, AAA isolutions. */
 
 .about {
   position: relative;
   background: #ffffff;
-  height: 100%;
+  height: 100svh;
   min-height: 100svh;
   max-height: 100svh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
   padding: 0;
@@ -25,39 +25,102 @@
   max-width: none;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   margin: 0;
   padding: 0;
   z-index: 1;
 }
 
-.frame {
+/* Aspect-ratio locked canvas matching 3414x1842 */
+.canvas {
   position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  overflow: hidden;
-  background: #ffffff;
-  box-shadow: none;
-  border: none;
+  width: min(100vw, calc(100svh * 3414 / 1842));
+  height: min(100svh, calc(100vw * 1842 / 3414));
+  aspect-ratio: 3414 / 1842;
+  margin: auto;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 
 .bannerImg {
   width: 100%;
   height: 100%;
-  max-height: 100svh;
-  max-width: 100vw;
-  object-fit: contain;
-  object-position: center bottom;
+  object-fit: fill;
   display: block;
-  margin: 0;
+  margin: 0 auto;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
   transform: translateZ(0);
   backface-visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ============ INTERACTIVE BUTTON HOTSPOTS ============
+   Mapped 1:1 to exact pixel coordinates of the graphic buttons */
+.hotspot {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.22s cubic-bezier(0.33, 1, 0.68, 1),
+              box-shadow 0.25s ease,
+              background-color 0.2s ease;
+}
+
+/* Button 1: "Explore Our Work →" */
+.btnWork {
+  left: 6.796%;
+  top: 66.721%;
+  width: 14.089%;
+  height: 6.026%;
+}
+
+.btnWork:hover {
+  transform: scale(1.025);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 28px -6px rgba(235, 65, 45, 0.45);
+}
+
+.btnWork:active {
+  transform: scale(0.975);
+}
+
+.btnWork:focus-visible {
+  outline: 2px solid #eb412d;
+  outline-offset: 3px;
+}
+
+/* Scroll to explore hotspot */
+.btnScroll {
+  left: 6.5%;
+  top: 92.2%;
+  width: 11.5%;
+  height: 4.8%;
+  border-radius: 12px;
+}
+
+.btnScroll:hover {
+  transform: translateY(2px);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.btnScroll:active {
+  transform: translateY(4px);
+}
+
+.btnScroll:focus-visible {
+  outline: 2px solid #999999;
+  outline-offset: 2px;
 }
 
 /* Accessibility & SEO hidden text */
@@ -75,26 +138,28 @@
 
 @media (max-width: 1000px) {
   .about {
-    height: auto;
-    min-height: auto;
-    max-height: none;
-    padding-top: 76px;
-    padding-bottom: 24px;
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+    padding: 0;
     justify-content: center;
+    align-items: center;
   }
 
   .stage {
-    height: auto;
+    height: 100%;
+    align-items: center;
   }
 
-  .frame {
-    height: auto;
+  .canvas {
+    width: min(100vw, calc(100svh * 3414 / 1842));
+    height: min(100svh, calc(100vw * 1842 / 3414));
+    aspect-ratio: 3414 / 1842;
   }
 
   .bannerImg {
-    max-height: none;
-    height: auto;
     width: 100%;
-    object-fit: contain;
+    height: 100%;
+    object-fit: fill;
   }
 }

@@ -7,13 +7,12 @@ export const SITE_URL =
 
 export const PERSON = {
   name: "Infant Ashil A",
-  jobTitle: "Founder & CEO, AAA Solutions",
-  email: "kolligireeshkumarreddy0622@gmail.com",
+  jobTitle: "Founder & CEO, AAA isolutions",
+  email: "infantashil55@gmail.com",
   location: "India",
   /* exact profile URLs as supplied — also consumed by JSON-LD */
   sameAs: [
-    "https://www.linkedin.com/in/gireesh-kumar-reddy-kolli-",
-    "https://github.com/gireeshkumarreddy",
-    "https://www.instagram.com/itsgireeshreddy",
+    "https://www.linkedin.com/in/infant-ashil-a-b88a39361/",
+    "https://github.com/ashwiths",
   ],
 };

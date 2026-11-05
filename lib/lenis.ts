@@ -35,8 +35,19 @@ export function scrollToHash(hash: string) {
   const lenis = getLenis();
 
   if (lenis) {
-    if (toTop) lenis.scrollTo(0, { duration: 1.1 });
-    else lenis.scrollTo(target as HTMLElement, { offset: -headerOffset(), duration: 1.1 });
+    if (toTop) {
+      lenis.scrollTo(0, { duration: 1.1 });
+    } else {
+      /* Full-frame closing sections (like #contact in .finalFrame)
+         must scroll flush to the viewport top (offset: 0) so the rising frame
+         fully covers the preceding sticky scene without exposing background chips. */
+      const isFullFrame =
+        hash === "#contact" ||
+        (target as HTMLElement).classList.contains("finalFrame") ||
+        Boolean((target as HTMLElement).closest(".finalFrame"));
+      const offset = isFullFrame ? 0 : -headerOffset();
+      lenis.scrollTo(target as HTMLElement, { offset, duration: 1.1 });
+    }
   } else {
     /* reduced motion / no Lenis — scroll-margin-top in globals.css
        keeps the landing position correct here too */

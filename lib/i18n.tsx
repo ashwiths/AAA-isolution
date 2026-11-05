@@ -98,11 +98,11 @@ export const DICT: Record<string, Entry> = {
 
   /* ---------------- design stack ---------------- */
   "stack.eyebrow": { en: "Toolkit", fr: "Outils" },
-  "stack.h2": { en: "My Design", fr: "Ma boîte à" },
+  "stack.h2": { en: "Our Design", fr: "Notre boîte à" },
   "stack.h2Em": { en: "Stack.", fr: "outils." },
   "stack.lede": {
-    en: "The tools I use to research, design, prototype, collaborate and ship — from the first rough sketch to production code.",
-    fr: "Les outils avec lesquels je recherche, conçois, prototype, collabore et livre — du premier croquis au code en production.",
+    en: "The tools we use to research, design, prototype, collaborate and ship — from the first rough sketch to production code.",
+    fr: "Les outils avec lesquels nous concevons, prototypons, collaborons et livrons — du premier croquis au code en production.",
   },
   "stack.count": { en: "tools", fr: "outils" },
   "stack.disciplines": { en: "disciplines", fr: "disciplines" },

@@ -1,14 +1,10 @@
-# Gireesh — Portfolio
+# AAA isolutions — Infant Ashil A
 
-Personal portfolio of **Gireesh Kumar Reddy Kolli**, Product Designer & UX
-Consultant (Antibes, France). A single-page cinematic experience: full-screen
-scenes stacked on top of each other, each one rising over the last as you
-scroll, with scroll-driven set pieces inside them.
+Digital portfolio and agency platform of **Infant Ashil A**, Founder & CEO of **AAA isolutions**. A cinematic web experience featuring full-screen interactive scenes, 3D tunnel entrance, showcase galleries, and client contact integration.
 
-**Live product work:** [myheeding.com](https://www.myheeding.com/en) ·
-**Profiles:** [LinkedIn](https://www.linkedin.com/in/gireesh-kumar-reddy-kolli-) ·
-[GitHub](https://github.com/gireeshkumarreddy) ·
-[Instagram](https://www.instagram.com/itsgireeshreddy)
+**Profiles:** [LinkedIn](https://www.linkedin.com/in/infant-ashil-a-b88a39361/) ·
+[GitHub](https://github.com/ashwiths) ·
+[Gmail](mailto:infantashil55@gmail.com)
 
 ## Stack
 

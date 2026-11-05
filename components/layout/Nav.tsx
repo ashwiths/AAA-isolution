@@ -12,27 +12,33 @@ export default function Nav() {
   const ref = useRef<HTMLElement>(null);
   const { t } = useLang();
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const isAboutPage = pathname === "/about";
-  const [active, setActive] = useState<string | null>(isAboutPage ? "about" : null);
+  const isContactPage = pathname === "/contact";
+  const [active, setActive] = useState<string | null>(
+    isAboutPage ? "about" : isContactPage ? "contact" : null
+  );
   /* mobile drawer — the desktop pill can't hold four links plus the toggle
      at phone widths, so below 900px navigation lives behind a menu button
      rather than being hidden entirely (which is what it was doing) */
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { key: "nav.home", href: isAboutPage ? "/#home" : "#home", watch: null },
-    { key: "nav.work", href: isAboutPage ? "/#work" : "#work", watch: "work" },
-    { key: "nav.credentials", href: isAboutPage ? "/#credentials" : "#credentials", watch: "credentials" },
+    { key: "nav.home", href: isHome ? "#home" : "/#home", watch: null },
+    { key: "nav.work", href: isHome ? "#work" : "/#work", watch: "work" },
+    { key: "nav.credentials", href: isHome ? "#credentials" : "/#credentials", watch: "credentials" },
     { key: "nav.about", href: "/about", watch: "about" },
-    { key: "nav.contact", href: "#contact", watch: "contact" },
+    { key: "nav.contact", href: isHome ? "#contact" : "/contact", watch: "contact" },
   ];
 
   /* sync active state if route changes */
   useEffect(() => {
     if (isAboutPage) {
       setActive("about");
+    } else if (isContactPage) {
+      setActive("contact");
     }
-  }, [isAboutPage]);
+  }, [isAboutPage, isContactPage]);
 
   /* close on Escape, and lock the page behind the open drawer */
   useEffect(() => {
@@ -73,9 +79,8 @@ export default function Nav() {
         onLeaveBack: () => nav.classList.remove(styles.scrolled),
       });
 
-      /* scroll-spy: the nav reflects where you actually are, and falls back
-         to Home whenever you are near the top of the document */
-      if (!isAboutPage) {
+      /* scroll-spy: the nav reflects where you actually are on the home page */
+      if (isHome) {
         const spies = links
           .filter((l) => l.watch && l.watch !== "about" && document.getElementById(l.watch))
           .map((l) =>

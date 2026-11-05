@@ -9,12 +9,12 @@
   /* the reference ground: warm light grey, subtly darker toward the bottom */
   background: linear-gradient(163deg, #ededee 0%, #e4e4e6 52%, #d9d9dc 100%);
   overflow: hidden;
-  padding: 96px 0;
+  padding: clamp(100px, 12vh, 120px) 0 96px;
 }
 .deckMode {
   height: 100svh;
   min-height: 640px;
-  padding: 46px 0 0;
+  padding: clamp(96px, 12vh, 120px) 0 0;
   display: flex;
   flex-direction: column;
 }
@@ -61,25 +61,23 @@
   text-wrap: pretty;
 }
 
-/* Short viewports: the heading gives room back to the credential panel
-   rather than squeezing the panel's own content. */
+/* Short viewports: ensure clean clearance below floating navbar while keeping panel proportion */
 @media (max-height: 800px) {
   .deckMode {
-    padding-top: 30px;
+    padding-top: 96px;
   }
   .h2 {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: clamp(30px, 4.6vh, 52px);
   }
   .lede {
-    margin-top: 9px;
+    margin-top: 10px;
     font-size: 13px;
     max-width: 520px;
   }
-  /* the heading now costs less, so the panel reclaims that height.
-     `.deckMode` prefix keeps this ahead of the base .stage rule below. */
+  /* the heading now sits cleanly below nav; panel adapts smoothly */
   .deckMode .stage {
-    --panel-w: clamp(340px, min(58vw, calc((100vh - 270px) * 1.6)), 980px);
+    --panel-w: clamp(340px, min(58vw, calc((100vh - 310px) * 1.6)), 980px);
   }
   /* and the panel's own rhythm tightens so the record still fits */
   .band {
@@ -97,11 +95,14 @@
   }
 }
 @media (max-height: 680px) {
+  .deckMode {
+    padding-top: 86px;
+  }
   .lede {
     display: none; /* the heading alone still names the section */
   }
   .deckMode .stage {
-    --panel-w: clamp(340px, min(58vw, calc((100vh - 215px) * 1.6)), 980px);
+    --panel-w: clamp(340px, min(58vw, calc((100vh - 240px) * 1.6)), 980px);
   }
 }
 
@@ -417,7 +418,7 @@
 /* ============ responsive ============ */
 @media (max-width: 1000px) {
   .certs {
-    padding: 80px 0;
+    padding: 108px 0 80px;
   }
   .head,
   .foot {

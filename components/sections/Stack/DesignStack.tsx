@@ -1,7 +1,7 @@
 "use client";
 
 /*
- * MY DESIGN STACK — full-viewport spiral orbit
+ * OUR DESIGN STACK — full-viewport spiral orbit
  *
  * Engine rebuilt from the Archimedean-spiral reference. Kept:
  *   · Archimedean path (radius falls linearly with angle → evenly spaced arms)
