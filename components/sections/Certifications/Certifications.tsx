@@ -208,12 +208,14 @@ export default function Certifications() {
   }, []);
 
   return (
-    <section className={styles.certs} id="certifications" ref={root}>
+    <section className={styles.certs} id="credentials" ref={root}>
+      {/* Anchor for backwards-compatible #certifications links */}
+      <span id="certifications" style={{ position: "absolute", top: 0, left: 0 }} aria-hidden="true" />
       {/* The section now names itself, so the deck no longer needs an
           introduction slide standing in for a heading. */}
       <div className={styles.head}>
         <p className={styles.eyebrow}>
-          <span>03</span> {t("cert.eyebrow")}
+          <span>02</span> {t("cert.eyebrow")}
         </p>
         <h2 className={styles.h2}>{t("cert.h2")}</h2>
         <p className={styles.lede}>{t("cert.lede")}</p>
@@ -314,7 +316,7 @@ export default function Certifications() {
 
       <div className={styles.foot}>
         <span className={styles.brandFoot}>
-          <b>06</b> Gireesh
+          <b>02</b> Infant Ashil A · AAA isolutions
         </span>
         <span className={styles.count}>
           01 / {String(PANELS.length).padStart(2, "0")}

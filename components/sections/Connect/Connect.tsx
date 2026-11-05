@@ -1,34 +1,18 @@
 "use client";
 
 /*
- * LET'S CONNECT — the closing chapter (Patta "Let's connect" as the mood
- * reference: curved panel row, floating perspective, calm typography).
- * Our take: five memory panels on a shallow 3D arc that lean with the
- * cursor and breathe on idle; the site-wide Button carries the CTA; social
- * cards use the same circle-fill + roll language as the nav.
+ * LET'S CONNECT — the closing section.
+ * Clean, focused contact area: strong typography, primary CTA, and social links.
  */
 
 import { useEffect, useRef, type ReactNode } from "react";
 import { gsap, EASE, prefersReducedMotion } from "@/lib/gsap";
 import Button from "@/components/ui/Button";
+import ServicesTicker from "@/components/sections/Ticker/ServicesTicker";
 import styles from "./Connect.module.css";
 import { useLang } from "@/lib/i18n";
+import { PERSON } from "@/lib/site";
 
-/* Gireesh's own photographs, in the order he supplied them (IMAGE 1–5).
-   `focus` is object-position only: the frames are portrait and two of the
-   photos are landscape, so this keeps him in frame — the images are cropped,
-   never scaled non-uniformly, and their colour is left untouched. */
-const PANELS = [
-  { src: "/images/connect/moment-1.jpg", focus: "58% 30%", rotate: 26, z: -110, y: -26 },
-  { src: "/images/connect/moment-2.jpg", focus: "center 32%", rotate: 13, z: -40, y: -8 },
-  { src: "/images/connect/moment-3.jpg", focus: "center 34%", rotate: 0, z: 0, y: 0 },
-  { src: "/images/connect/moment-4.jpg", focus: "center 30%", rotate: -13, z: -40, y: -8 },
-  { src: "/images/connect/moment-5.jpg", focus: "46% 32%", rotate: -26, z: -110, y: -26 },
-];
-
-/* Official brand marks, inlined so they inherit size and need no requests.
-   Paths are the brands' own glyphs (LinkedIn "in" bug, GitHub mark,
-   Instagram camera outline) — not generic lookalikes. */
 const MARKS: Record<string, ReactNode> = {
   linkedin: (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -47,12 +31,11 @@ const MARKS: Record<string, ReactNode> = {
   ),
 };
 
-/* URLs exactly as supplied — never guessed (see CONTENT_AUDIT.md) */
 const SOCIALS = [
-  { name: "LinkedIn", mark: "linkedin", href: "https://www.linkedin.com/in/gireesh-kumar-reddy-kolli-" },
-  { name: "GitHub", mark: "github", href: "https://github.com/gireeshkumarreddy" },
-  { name: "Instagram", mark: "instagram", href: "https://www.instagram.com/itsgireeshreddy" },
-  { name: "Email", glyph: "@", href: "mailto:kolligireeshkumarreddy0622@gmail.com" },
+  { name: "LinkedIn", mark: "linkedin", href: PERSON.sameAs[0] },
+  { name: "GitHub", mark: "github", href: PERSON.sameAs[1] },
+  { name: "Instagram", mark: "instagram", href: PERSON.sameAs[2] },
+  { name: "Email", glyph: "@", href: `mailto:${PERSON.email}` },
 ] as const;
 
 export default function Connect() {
@@ -64,74 +47,25 @@ export default function Connect() {
     if (!el || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
-      /* reveal */
       gsap.from(`.${styles.head} > *`, {
-        y: 36,
-        autoAlpha: 0,
-        duration: 0.9,
-        ease: EASE.outExpo,
-        stagger: 0.09,
-        immediateRender: false,
-        scrollTrigger: { trigger: el, start: "top 70%" },
-      });
-      gsap.from(`.${styles.panel}`, {
-        y: 90,
-        autoAlpha: 0,
-        duration: 1.1,
-        ease: EASE.outExpo,
-        stagger: { each: 0.08, from: "center" },
-        immediateRender: false,
-        scrollTrigger: { trigger: `.${styles.arc}`, start: "top 82%" },
-      });
-      gsap.from(`.${styles.socials} > *`, {
-        y: 26,
+        y: 28,
         autoAlpha: 0,
         duration: 0.8,
         ease: EASE.outExpo,
-        stagger: 0.07,
+        stagger: 0.08,
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: "top 75%" },
+      });
+
+      gsap.from(`.${styles.socials} > *`, {
+        y: 20,
+        autoAlpha: 0,
+        duration: 0.7,
+        ease: EASE.outExpo,
+        stagger: 0.06,
         immediateRender: false,
         scrollTrigger: { trigger: `.${styles.socials}`, start: "top 88%" },
       });
-
-      /* idle float — each panel bobs on its own rhythm */
-      gsap.utils.toArray<HTMLElement>(`.${styles.panelInner}`).forEach((p, i) => {
-        gsap.to(p, {
-          y: `+=${6 + (i % 3) * 3}`,
-          duration: 3 + (i % 3) * 0.7,
-          yoyo: true,
-          repeat: -1,
-          ease: "sine.inOut",
-          delay: i * 0.4,
-        });
-      });
-
-      /* cursor: the whole arc leans, each panel adds its own micro-tilt */
-      const panels = gsap.utils.toArray<HTMLElement>(`.${styles.panel}`);
-      const setters = panels.map((p, i) => ({
-        rx: gsap.quickTo(p, "rotationX", { duration: 0.9, ease: "power3.out" }),
-        add: gsap.quickTo(p, "rotationY", { duration: 0.9, ease: "power3.out" }),
-        base: PANELS[i].rotate,
-      }));
-      const onMove = (e: PointerEvent) => {
-        const r = el.getBoundingClientRect();
-        const cx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-        const cy = ((e.clientY - r.top) / r.height - 0.5) * 2;
-        setters.forEach((s) => {
-          s.add(s.base + cx * 5);
-          s.rx(-cy * 4);
-        });
-      };
-      const onLeave = () => setters.forEach((s) => {
-        s.add(s.base);
-        s.rx(0);
-      });
-      el.addEventListener("pointermove", onMove);
-      el.addEventListener("pointerleave", onLeave);
-
-      return () => {
-        el.removeEventListener("pointermove", onMove);
-        el.removeEventListener("pointerleave", onLeave);
-      };
     }, el);
 
     return () => ctx.revert();
@@ -139,9 +73,12 @@ export default function Connect() {
 
   return (
     <section className={styles.connect} id="contact" ref={root}>
+      {/* Services ticker leading the Let's Connect page */}
+      <ServicesTicker className={styles.connectTicker} />
+
       <div className={styles.head}>
         <p className={styles.eyebrow}>
-          <span>08</span> {t("connect.eyebrow")}
+          <span>04</span> {t("connect.eyebrow")}
         </p>
         <h2 className={styles.h2}>
           {t("connect.h2a")}{" "}
@@ -151,37 +88,10 @@ export default function Connect() {
           {t("connect.lede")}
         </p>
         <div className={styles.cta}>
-          <Button href="mailto:kolligireeshkumarreddy0622@gmail.com" variant="primary" arrow>
+          <Button href={`mailto:${PERSON.email}`} variant="primary" arrow>
             {t("connect.cta")}
           </Button>
         </div>
-      </div>
-
-      {/* curved memory arc */}
-      <div className={styles.arc} aria-hidden="true">
-        {PANELS.map((p, i) => (
-          <div
-            className={styles.panel}
-            key={p.src}
-            style={
-              {
-                transform: `translate3d(0, ${p.y}px, ${p.z}px) rotateY(${p.rotate}deg)`,
-              } as React.CSSProperties
-            }
-          >
-            <div className={`${styles.panelInner} ${styles.hasPhoto}`}>
-              <img
-                className={styles.photo}
-                src={p.src}
-                alt=""
-                style={{ objectPosition: p.focus }}
-                loading="lazy"
-                decoding="async"
-                aria-hidden="true"
-              />
-            </div>
-          </div>
-        ))}
       </div>
 
       {/* social cards */}
@@ -208,12 +118,12 @@ export default function Connect() {
 
       <footer className={styles.footer}>
         <span>
-          {t("connect.credit")} <b>Gireesh</b>
+          {t("connect.credit")} <b>{PERSON.name}</b>
         </span>
-        <a href="#home" className={styles.top}>
+        <a href="#about" className={styles.top}>
           {t("connect.top")}
         </a>
-        <span>© 2026 Gireesh Kumar Reddy Kolli</span>
+        <span>© 2026 AAA Solutions. All rights reserved.</span>
       </footer>
     </section>
   );

@@ -1,28 +1,38 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import LanguageToggle from "./LanguageToggle";
 import { useLang } from "@/lib/i18n";
 import styles from "./Nav.module.css";
 
-/* `#home` resolves to the very top of the document (see lib/lenis.ts), so
-   Home always returns to the true beginning of the portfolio. */
-const LINKS = [
-  { key: "nav.home", href: "#home", watch: null },
-  { key: "nav.work", href: "#work", watch: "work" },
-  { key: "nav.about", href: "#hero", watch: "hero" },
-  { key: "nav.contact", href: "#contact", watch: "contact" },
-];
-
 export default function Nav() {
   const ref = useRef<HTMLElement>(null);
   const { t } = useLang();
-  const [active, setActive] = useState<string | null>(null);
+  const pathname = usePathname();
+  const isAboutPage = pathname === "/about";
+  const [active, setActive] = useState<string | null>(isAboutPage ? "about" : null);
   /* mobile drawer — the desktop pill can't hold four links plus the toggle
      at phone widths, so below 900px navigation lives behind a menu button
      rather than being hidden entirely (which is what it was doing) */
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const links = [
+    { key: "nav.home", href: isAboutPage ? "/#home" : "#home", watch: null },
+    { key: "nav.work", href: isAboutPage ? "/#work" : "#work", watch: "work" },
+    { key: "nav.credentials", href: isAboutPage ? "/#credentials" : "#credentials", watch: "credentials" },
+    { key: "nav.about", href: "/about", watch: "about" },
+    { key: "nav.contact", href: "#contact", watch: "contact" },
+  ];
+
+  /* sync active state if route changes */
+  useEffect(() => {
+    if (isAboutPage) {
+      setActive("about");
+    }
+  }, [isAboutPage]);
 
   /* close on Escape, and lock the page behind the open drawer */
   useEffect(() => {
@@ -65,45 +75,49 @@ export default function Nav() {
 
       /* scroll-spy: the nav reflects where you actually are, and falls back
          to Home whenever you are near the top of the document */
-      const spies = LINKS.filter((l) => l.watch).map((l) =>
-        ScrollTrigger.create({
-          trigger: `#${l.watch}`,
-          start: "top 55%",
-          end: "bottom 45%",
+      if (!isAboutPage) {
+        const spies = links
+          .filter((l) => l.watch && l.watch !== "about" && document.getElementById(l.watch))
+          .map((l) =>
+            ScrollTrigger.create({
+              trigger: `#${l.watch}`,
+              start: "top 55%",
+              end: "bottom 45%",
+              onToggle: (self) => {
+                if (self.isActive) setActive(l.watch);
+              },
+            })
+          );
+        const top = ScrollTrigger.create({
+          start: 0,
+          end: () => window.innerHeight * 1.2,
           onToggle: (self) => {
-            if (self.isActive) setActive(l.watch);
+            if (self.isActive) setActive(null);
           },
-        })
-      );
-      const top = ScrollTrigger.create({
-        start: 0,
-        end: () => window.innerHeight * 1.2,
-        onToggle: (self) => {
-          if (self.isActive) setActive(null);
-        },
-      });
+        });
 
-      return () => {
-        spies.forEach((s) => s.kill());
-        top.kill();
-      };
+        return () => {
+          spies.forEach((s) => s.kill());
+          top.kill();
+        };
+      }
     }, nav);
 
     return () => ctx.revert();
-  }, []);
+  }, [isAboutPage]);
 
   return (
     <header className={styles.wrap} ref={ref}>
       <div className={styles.cap}>
-        <a href="#home" className={styles.logo} aria-label={t("nav.home")}>
+        <Link href={isAboutPage ? "/" : "#home"} className={styles.logo} aria-label={t("nav.home")}>
           AAA isolutions<i>.</i>
-        </a>
+        </Link>
 
         <nav className={styles.links} aria-label="Primary">
-          {LINKS.map((l) => {
-            const isOn = l.watch === active;
+          {links.map((l) => {
+            const isOn = isAboutPage ? l.key === "nav.about" : l.watch === active;
             return (
-              <a
+              <Link
                 key={l.key}
                 href={l.href}
                 className={isOn ? styles.on : ""}
@@ -113,7 +127,7 @@ export default function Nav() {
                   <span>{t(l.key)}</span>
                   <span aria-hidden="true">{t(l.key)}</span>
                 </span>
-              </a>
+              </Link>
             );
           })}
         </nav>
@@ -141,17 +155,20 @@ export default function Nav() {
         hidden={!menuOpen}
       >
         <nav aria-label="Primary mobile">
-          {LINKS.map((l) => (
-            <a
-              key={l.key}
-              href={l.href}
-              className={l.watch === active ? styles.sheetOn : ""}
-              aria-current={l.watch === active ? "page" : undefined}
-              onClick={() => setMenuOpen(false)}
-            >
-              {t(l.key)}
-            </a>
-          ))}
+          {links.map((l) => {
+            const isOn = isAboutPage ? l.key === "nav.about" : l.watch === active;
+            return (
+              <Link
+                key={l.key}
+                href={l.href}
+                className={isOn ? styles.sheetOn : ""}
+                aria-current={isOn ? "page" : undefined}
+                onClick={() => setMenuOpen(false)}
+              >
+                {t(l.key)}
+              </Link>
+            );
+          })}
         </nav>
       </div>
       <button

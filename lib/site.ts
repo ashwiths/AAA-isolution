@@ -6,10 +6,10 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const PERSON = {
-  name: "Gireesh Kumar Reddy Kolli",
-  jobTitle: "Product Designer & UX Consultant",
+  name: "Infant Ashil A",
+  jobTitle: "Founder & CEO, AAA Solutions",
   email: "kolligireeshkumarreddy0622@gmail.com",
-  location: "Antibes, France",
+  location: "India",
   /* exact profile URLs as supplied — also consumed by JSON-LD */
   sameAs: [
     "https://www.linkedin.com/in/gireesh-kumar-reddy-kolli-",

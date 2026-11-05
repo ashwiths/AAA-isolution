@@ -27,9 +27,9 @@ type Entry = { en: string; fr: string };
 export const DICT: Record<string, Entry> = {
   /* ---------------- nav ---------------- */
   "nav.home": { en: "Home", fr: "Accueil" },
-  "nav.about": { en: "About", fr: "À propos" },
+  "nav.credentials": { en: "Credentials", fr: "Certifications" },
   "nav.work": { en: "Work", fr: "Projets" },
-  "nav.featured": { en: "All Projects", fr: "Tous les projets" },
+  "nav.about": { en: "About", fr: "À propos" },
   "nav.contact": { en: "Contact", fr: "Contact" },
   "nav.menu": { en: "Open menu", fr: "Ouvrir le menu" },
   "nav.close": { en: "Close menu", fr: "Fermer le menu" },
@@ -228,7 +228,7 @@ type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string };
 
 const LanguageContext = createContext<Ctx>({
   lang: "en",
-  setLang: () => {},
+  setLang: () => { },
   t: (k) => DICT[k]?.en ?? k,
 });
 

@@ -267,7 +267,7 @@ export default function DesignStack() {
         {/* stationary focal point */}
         <div className={styles.center}>
           <p className={styles.eyebrow}>
-            <span>02</span> {t("stack.eyebrow")}
+            <span>03</span> {t("stack.eyebrow")}
           </p>
           <h2 className={styles.h2}>
             {t("stack.h2")} <em className={styles.serif}>{t("stack.h2Em")}</em>
