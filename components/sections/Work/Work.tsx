@@ -173,20 +173,6 @@ export default function Work() {
                   </div>
                 </div>
               </a>
-              {/* verified destination — a sibling of the card link, so the
-                  anchors never nest; sits over the cover's top-right. Live
-                  site wins when a project has both. */}
-              {(p.site || p.repo) && (
-                <a
-                  className={styles.siteChip}
-                  href={p.site ? p.site.url : p.repo}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${p.site ? p.site.label : "GitHub"} ↗`}
-                >
-                  {p.site ? p.site.label : "GitHub"} <i aria-hidden="true">↗</i>
-                </a>
-              )}
             </article>
           ))}
         </div>

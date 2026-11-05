@@ -1,14 +1,17 @@
 "use client";
 
 import { useEffect, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
-import { setLenis, scrollToHash } from "@/lib/lenis";
+import { setLenis, getLenis, scrollToHash } from "@/lib/lenis";
 
 /* Single rAF loop: Lenis drives ScrollTrigger — 00 §7.3.
    Also owns in-page anchor scrolling for the whole site, so every link
    (nav, hero CTAs, footer, and anything we add later) lands below the header. */
 export default function SmoothScroll({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
   useEffect(() => {
     let lenis: Lenis | null = null;
     let raf: ((time: number) => void) | null = null;
@@ -34,12 +37,6 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     };
     document.addEventListener("click", onClick);
 
-    /* honour a hash present on first load */
-    if (window.location.hash) {
-      const hash = window.location.hash;
-      requestAnimationFrame(() => setTimeout(() => scrollToHash(hash), 60));
-    }
-
     return () => {
       document.removeEventListener("click", onClick);
       if (raf) gsap.ticker.remove(raf);
@@ -47,6 +44,22 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       setLenis(null);
     };
   }, []);
+
+  /* Route change effect: whenever pathname changes, always scroll to the top of the new page */
+  useEffect(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    if (hash && hash !== "#home" && hash !== "#") {
+      requestAnimationFrame(() => setTimeout(() => scrollToHash(hash), 80));
+    } else {
+      const lenis = getLenis();
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      }
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0, left: 0 });
+      }
+    }
+  }, [pathname]);
 
   return <>{children}</>;
 }

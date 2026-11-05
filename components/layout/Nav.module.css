@@ -20,8 +20,8 @@
   pointer-events: auto;
   display: flex;
   align-items: center;
-  gap: 30px;
-  width: min(860px, 100%);
+  gap: 20px;
+  width: min(920px, 100%);
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -63,10 +63,11 @@
 /* --- links with roll-over micro-interaction --- */
 .links {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   font-size: 14px;
   font-weight: 600;
   color: var(--ink-2);
+  white-space: nowrap;
 }
 /* pill links — same interaction standard as Button: circle fill + label roll */
 .links a {

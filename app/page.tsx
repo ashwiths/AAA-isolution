@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <>
       <Nav />
+      <span id="home" style={{ position: "absolute", top: 0, left: 0, width: 0, height: 0 }} aria-hidden="true" />
       <main>
         {/* HOME: 3D "AAA isolutions" tunnel entrance */}
         <Scene order={1} runway={4} id="intro" keepOnMobile>

@@ -89,7 +89,6 @@ export const PROJECTS: Project[] = [
       variant: "photo",
       focus: "center 45%",
     },
-    site: { url: "https://www.myheeding.com/en", label: "myheeding.com" },
     fr: {
       title: "Développement Web",
       oneLiner:
@@ -873,7 +872,6 @@ export const PROJECTS: Project[] = [
       focus: "center 40%",
     },
     repo: "https://github.com/gireeshkumarreddy/Ghost-Rider-",
-    site: { url: "https://ghost-rider-orpin.vercel.app", label: "Live site" },
     fr: {
       title: "Cartes de Visite Professionnelles",
       oneLiner:
@@ -1134,7 +1132,6 @@ export const PROJECTS: Project[] = [
       "Compelling slide decks that communicate your ideas effectively.",
     coverLabel: "PRESENTATION DESIGN",
     cover: { bg: "#0B0B0E", ink: "light", src: "/images/projects/reverie-cover.jpg", variant: "photo" },
-    site: { url: "https://musical-tanuki-680d11.netlify.app", label: "Live site" },
     repo: "https://github.com/gireeshkumarreddy/R-VERIE-A-Waking-Dream",
     fr: {
       title: "Design de Présentations & Pitch Decks",

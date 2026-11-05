@@ -14,28 +14,59 @@ export default function ContactForm() {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [countdown, setCountdown] = useState(3);
+  const [countdown, setCountdown] = useState(10);
 
+  // Quick auto-fill test data
   const fillTestData = () => {
-    setName("Infant Ashil");
-    setEmail("infantashil55@gmail.com");
-    setMessage(
-      "Hi, I'd like to discuss a digital experience, design, and development project with AAA isolutions!"
-    );
+    setName("INFANT ASHIL.A");
+    setEmail("727723eucs078@skcet.ac.in");
+    setSubject("UI/UX Design");
+    setMessage("Hi, I am interested in collaborating on a digital experience and UI/UX project with AAA isolutions!");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !email.trim() || !message.trim()) return;
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      e.preventDefault();
+      return;
+    }
+
+    // Save inquiry to localStorage for offline resilience
+    try {
+      const record = {
+        name: name.trim(),
+        email: email.trim(),
+        subject,
+        message: message.trim(),
+        date: new Date().toISOString(),
+      };
+      const saved = JSON.parse(localStorage.getItem("aaa_inquiries") || "[]");
+      localStorage.setItem("aaa_inquiries", JSON.stringify([record, ...saved]));
+    } catch {}
 
     setIsSubmitting(true);
 
-    // Simulate sending / processing (400ms for realistic tactile feedback)
+    // Fast tactile response: immediately transition in 150ms without blocking on network lag
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      setCountdown(3);
-    }, 400);
+      setCountdown(10);
+    }, 150);
+
+    // Background server dispatch (non-blocking, keepalive)
+    try {
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          subject,
+          message: message.trim(),
+        }),
+        keepalive: true,
+      }).catch(() => {});
+    } catch {}
+    // Native form submission will complete simultaneously into the hidden iframe
   };
 
   // 3-second live countdown and automatic redirect to Home page
@@ -54,6 +85,16 @@ export default function ContactForm() {
 
   return (
     <div className={styles.container}>
+      {/* Hidden target iframe: captures the submission response instantly without reloading or failing */}
+      <iframe
+        name="contact_hidden_iframe"
+        id="contact_hidden_iframe"
+        title="Form Target"
+        style={{ display: "none", width: 0, height: 0, border: 0 }}
+        tabIndex={-1}
+        aria-hidden="true"
+      />
+
       {!isSubmitted ? (
         <>
           {/* Header */}
@@ -95,7 +136,29 @@ export default function ContactForm() {
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className={styles.formGrid}>
+              {/* Native form action POSTs to FormSubmit through the hidden iframe */}
+              <form
+                action="https://formsubmit.co/infantashil55@gmail.com"
+                method="POST"
+                target="contact_hidden_iframe"
+                onSubmit={handleSubmit}
+                className={styles.formGrid}
+              >
+                {/* Hidden FormSubmit configuration parameters */}
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value={`🔔 [AAA isolutions] ${name || "New Lead"} is interested in ${subject || "UI/UX Design"}!`}
+                />
+                <input type="hidden" name="_replyto" value={email} />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input
+                  type="hidden"
+                  name="Notification"
+                  value={`${name || "User"} is interested in ${subject} and contacted AAA isolutions!`}
+                />
+
                 <div className={styles.rowTwo}>
                   {/* Name field */}
                   <div className={styles.field}>
@@ -105,11 +168,12 @@ export default function ContactForm() {
                     </label>
                     <input
                       id="name"
+                      name="name"
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Infant Ashil"
+                      placeholder="e.g. INFANT ASHIL.A"
                       className={styles.input}
                     />
                   </div>
@@ -122,11 +186,12 @@ export default function ContactForm() {
                     </label>
                     <input
                       id="email"
+                      name="email"
                       type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="e.g. test@example.com"
+                      placeholder="e.g. 727723eucs078@skcet.ac.in"
                       className={styles.input}
                     />
                   </div>
@@ -139,6 +204,7 @@ export default function ContactForm() {
                   </label>
                   <select
                     id="subject"
+                    name="subject"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     className={styles.select}
@@ -160,6 +226,7 @@ export default function ContactForm() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     required
                     rows={5}
                     value={message}
@@ -176,7 +243,7 @@ export default function ContactForm() {
                   className={styles.submitBtn}
                 >
                   {isSubmitting ? (
-                    <span>Sending message...</span>
+                    <span>Sending...</span>
                   ) : (
                     <>
                       <span>Send Message</span>
@@ -258,13 +325,41 @@ export default function ContactForm() {
 
           <div className={styles.submittedSummary}>
             <div className={styles.summaryRow}>
-              <span className={styles.summaryLabel}>Sender:</span>
-              <span>{name} ({email})</span>
+              <span className={styles.summaryLabel}>Notification:</span>
+              <span className={styles.summaryVal}>
+                {name} is interested in {subject}
+              </span>
             </div>
             <div className={styles.summaryRow}>
-              <span className={styles.summaryLabel}>Subject:</span>
-              <span className={styles.summaryVal}>{subject}</span>
+              <span className={styles.summaryLabel}>Sender:</span>
+              <span>
+                {name} ({email})
+              </span>
             </div>
+            <div className={styles.summaryRow}>
+              <span className={styles.summaryLabel}>Delivered To:</span>
+              <span>{PERSON.email}</span>
+            </div>
+          </div>
+
+          {/* Quick open in Gmail option */}
+          <div style={{ marginBottom: "20px" }}>
+            <a
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=infantashil55@gmail.com&su=${encodeURIComponent(
+                `🔔 [AAA isolutions] ${name || "Client"} is interested in ${subject}!`
+              )}&body=${encodeURIComponent(
+                `Client Name: ${name}\nClient Email: ${email}\nInterested In: ${subject}\n\nMessage:\n${message}\n\nStatus: ${name} is interested in ${subject} and contacted AAA isolutions!`
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.gmailDirectCardBtn}
+            >
+              ✉ Open in Gmail to send / verify
+            </a>
+          </div>
+
+          <div className={styles.activationNotice}>
+            💡 <b>Note:</b> If this is your first submission, check your <b>Spam/Junk</b> or <b>Promotions</b> folder in <b>infantashil55@gmail.com</b> for the FormSubmit verification email and click <b>&quot;Activate Form&quot;</b> once to enable direct inbox delivery!
           </div>
 
           {/* Small font redirect notice at bottom as requested */}
@@ -272,7 +367,7 @@ export default function ContactForm() {
             <div className={styles.redirectProgress}>
               <div
                 className={styles.redirectBar}
-                style={{ width: `${(countdown / 3) * 100}%` }}
+                style={{ width: `${(countdown / 10) * 100}%` }}
               />
             </div>
             <p className={styles.redirectText}>

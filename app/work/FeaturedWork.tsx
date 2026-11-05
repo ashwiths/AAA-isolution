@@ -428,27 +428,17 @@ export default function FeaturedWork() {
                   </dl>
                   <div className={styles.actions}>
                     <a
-                      href={project.liveUrl}
-                      target={project.liveUrl.startsWith("http") ? "_blank" : undefined}
-                      rel={project.liveUrl.startsWith("http") ? "noreferrer" : undefined}
+                      href={
+                        project.sourceUrl.startsWith("/work")
+                          ? project.sourceUrl
+                          : project.liveUrl.startsWith("/work")
+                          ? project.liveUrl
+                          : `/work/${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`
+                      }
                     >
-                      {project.liveUrl.startsWith("/work")
-                        ? (isFrench ? "Voir l’étude" : "View Case Study")
-                        : (isFrench ? "Visiter le projet" : "Visit project")}
-                      <span aria-hidden="true">↗</span>
+                      {isFrench ? "Voir l’étude de cas" : "View Case Study"}
+                      <span aria-hidden="true">→</span>
                     </a>
-                    {project.sourceUrl && (
-                      <a
-                        href={project.sourceUrl}
-                        target={project.sourceUrl.startsWith("http") ? "_blank" : undefined}
-                        rel={project.sourceUrl.startsWith("http") ? "noreferrer" : undefined}
-                      >
-                        {project.sourceUrl.startsWith("/work")
-                          ? (isFrench ? "Étude de cas" : "Case Study")
-                          : "GitHub"}
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    )}
                   </div>
                 </div>
               </div>

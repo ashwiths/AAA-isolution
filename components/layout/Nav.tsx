@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { scrollToHash, getLenis } from "@/lib/lenis";
 import LanguageToggle from "./LanguageToggle";
 import { useLang } from "@/lib/i18n";
 import styles from "./Nav.module.css";
@@ -13,10 +14,10 @@ export default function Nav() {
   const { t } = useLang();
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isAboutPage = pathname === "/about";
+  const isFoundersDesk = pathname === "/founders-desk" || pathname === "/about";
   const isContactPage = pathname === "/contact";
   const [active, setActive] = useState<string | null>(
-    isAboutPage ? "about" : isContactPage ? "contact" : null
+    isFoundersDesk ? "founders-desk" : isContactPage ? "contact" : null
   );
   /* mobile drawer — the desktop pill can't hold four links plus the toggle
      at phone widths, so below 900px navigation lives behind a menu button
@@ -24,21 +25,41 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { key: "nav.home", href: isHome ? "#home" : "/#home", watch: null },
+    { key: "nav.home", href: isHome ? "#home" : "/", watch: null },
     { key: "nav.work", href: isHome ? "#work" : "/#work", watch: "work" },
     { key: "nav.credentials", href: isHome ? "#credentials" : "/#credentials", watch: "credentials" },
-    { key: "nav.about", href: "/about", watch: "about" },
-    { key: "nav.contact", href: isHome ? "#contact" : "/contact", watch: "contact" },
+    { key: "nav.contact", href: "/contact", watch: "contact" },
+    { key: "nav.foundersDesk", href: "/founders-desk", watch: "founders-desk" },
   ];
+
+  const handleLinkClick = (l: (typeof links)[0]) => {
+    if (menuOpen) setMenuOpen(false);
+
+    if (l.watch === null && isHome) {
+      scrollToHash("#home");
+    } else if (l.watch === "work" && isHome) {
+      scrollToHash("#work");
+    } else if (l.watch === "credentials" && isHome) {
+      scrollToHash("#credentials");
+    } else if (l.watch === "contact" && isContactPage) {
+      const lenis = getLenis();
+      if (lenis) lenis.scrollTo(0, { duration: 0.8 });
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (l.watch === "founders-desk" && isFoundersDesk) {
+      const lenis = getLenis();
+      if (lenis) lenis.scrollTo(0, { duration: 0.8 });
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   /* sync active state if route changes */
   useEffect(() => {
-    if (isAboutPage) {
-      setActive("about");
+    if (isFoundersDesk) {
+      setActive("founders-desk");
     } else if (isContactPage) {
       setActive("contact");
     }
-  }, [isAboutPage, isContactPage]);
+  }, [isFoundersDesk, isContactPage]);
 
   /* close on Escape, and lock the page behind the open drawer */
   useEffect(() => {
@@ -82,7 +103,13 @@ export default function Nav() {
       /* scroll-spy: the nav reflects where you actually are on the home page */
       if (isHome) {
         const spies = links
-          .filter((l) => l.watch && l.watch !== "about" && document.getElementById(l.watch))
+          .filter(
+            (l) =>
+              l.watch &&
+              l.watch !== "founders-desk" &&
+              l.watch !== "about" &&
+              document.getElementById(l.watch)
+          )
           .map((l) =>
             ScrollTrigger.create({
               trigger: `#${l.watch}`,
@@ -109,24 +136,38 @@ export default function Nav() {
     }, nav);
 
     return () => ctx.revert();
-  }, [isAboutPage]);
+  }, [isHome]);
 
   return (
     <header className={styles.wrap} ref={ref}>
       <div className={styles.cap}>
-        <Link href={isAboutPage ? "/" : "#home"} className={styles.logo} aria-label={t("nav.home")}>
+        <Link
+          href={isHome ? "#home" : "/"}
+          className={styles.logo}
+          aria-label={t("nav.home")}
+          onClick={() => {
+            if (isHome) scrollToHash("#home");
+          }}
+        >
           AAA isolutions<i>.</i>
         </Link>
 
         <nav className={styles.links} aria-label="Primary">
           {links.map((l) => {
-            const isOn = isAboutPage ? l.key === "nav.about" : l.watch === active;
+            const isOn = isFoundersDesk
+              ? l.watch === "founders-desk"
+              : isContactPage
+              ? l.watch === "contact"
+              : l.watch
+              ? l.watch === active
+              : !active && isHome;
             return (
               <Link
                 key={l.key}
                 href={l.href}
                 className={isOn ? styles.on : ""}
                 aria-current={isOn ? "page" : undefined}
+                onClick={() => handleLinkClick(l)}
               >
                 <span className={styles.roll}>
                   <span>{t(l.key)}</span>
@@ -161,14 +202,20 @@ export default function Nav() {
       >
         <nav aria-label="Primary mobile">
           {links.map((l) => {
-            const isOn = isAboutPage ? l.key === "nav.about" : l.watch === active;
+            const isOn = isFoundersDesk
+              ? l.watch === "founders-desk"
+              : isContactPage
+              ? l.watch === "contact"
+              : l.watch
+              ? l.watch === active
+              : !active && isHome;
             return (
               <Link
                 key={l.key}
                 href={l.href}
                 className={isOn ? styles.sheetOn : ""}
                 aria-current={isOn ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => handleLinkClick(l)}
               >
                 {t(l.key)}
               </Link>

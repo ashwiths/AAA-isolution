@@ -97,6 +97,43 @@
   transition: box-shadow 0.3s ease;
 }
 
+.errorBanner {
+  background: rgba(235, 65, 45, 0.08);
+  border: 1px solid rgba(235, 65, 45, 0.25);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #c92a18;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.errorActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mailDirectBtn {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #eb412d;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.mailDirectBtn:hover {
+  opacity: 0.9;
+}
+
 .formGrid {
   display: flex;
   flex-direction: column;
@@ -371,6 +408,45 @@
 .summaryVal {
   color: #eb412d;
   font-weight: 600;
+}
+
+.activationNotice {
+  background: #fff8e6;
+  border: 1px solid #ffe599;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7f5f00;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.activationNotice b {
+  color: #4a3800;
+}
+
+.gmailDirectCardBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #111111;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.gmailDirectCardBtn:hover {
+  background: #eb412d;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(235, 65, 45, 0.35);
 }
 
 /* Redirection Notice in Small Font at the Bottom */

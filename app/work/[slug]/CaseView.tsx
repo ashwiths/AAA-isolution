@@ -65,22 +65,6 @@ export default function CaseView({ slug }: { slug: string }) {
               <b>{t("case.focus")}</b>
               <span>{tags.join(" · ")}</span>
             </div>
-            {/* verified official destinations only — never a guessed URL */}
-            {project.site && (
-              <div>
-                <b>{t("case.site")}</b>
-                <span>
-                  <a
-                    className={styles.siteLink}
-                    href={project.site.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {project.site.label} ↗
-                  </a>
-                </span>
-              </div>
-            )}
             {project.repo && (
               <div>
                 <b>{t("case.repo")}</b>
@@ -176,18 +160,11 @@ export default function CaseView({ slug }: { slug: string }) {
           </div>
         </section>
 
-        {/* ---- outcome ---- */}
-        <section className={styles.section}>
-          <p className={styles.secLabel}>{t("case.outcome")}</p>
-          <div className={styles.outcomes}>
-            {study.outcomes.map((o, i) => (
-              <p className={styles.outcome} key={i}>
-                <span>✦</span> {o}
-              </p>
-            ))}
-          </div>
-          {study.note && <p className={styles.note}>{study.note}</p>}
-        </section>
+        {study.note && (
+          <section className={styles.section}>
+            <p className={styles.note}>{study.note}</p>
+          </section>
+        )}
 
         {/* ---- reflection ---- */}
         <section className={styles.section}>
